@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.UsersService;
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.Users;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.User;
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.repository.UsersRepository;
 
 @Service
@@ -17,12 +17,12 @@ public class UsersServiceImpl implements UsersService{
 	
 	
 	@Override
-	public List<Users> findAll() {
+	public List<User> findAll() {
 		return usersrepository.findAll();
 	}
 
 	@Override
-	public Users createUser(Users users) {
+	public User createUser(User users) {
 		return usersrepository.save(users);
 	}
 
@@ -37,7 +37,7 @@ public class UsersServiceImpl implements UsersService{
 	}
 
 	@Override
-	public Users updateUser(Users users) {
+	public User updateUser(User users) {
 		return usersrepository.save(users);
 	}
 

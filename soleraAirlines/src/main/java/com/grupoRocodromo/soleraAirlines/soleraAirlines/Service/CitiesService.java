@@ -2,18 +2,18 @@ package com.grupoRocodromo.soleraAirlines.soleraAirlines.Service;
 
 import java.util.List;
 
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.Cities;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.City;
 
 public interface CitiesService {
 	
 	
-	List<Cities> findAllCities();
+	List<City> findAllCities();
 	
-	Cities updateCity(Cities city);
+	City updateCity(City city);
 	
 	boolean deleteCity(Long id);
 	
-	Cities createCity(Cities city);
+	City createCity(City city);
 	
 
 }

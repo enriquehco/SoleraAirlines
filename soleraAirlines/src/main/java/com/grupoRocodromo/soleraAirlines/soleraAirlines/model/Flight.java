@@ -9,12 +9,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "flights")
-public class Flights {
+public class Flight {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,21 +28,27 @@ public class Flights {
 	
 	@Column(name = "luggage")
 	private boolean luggage;
-	
+
 	@Column(name = "company")
 	private String company;
 	
+	@Column(name = "price")
+	private int price;
+	
 	@Column(name ="departureCity")
-	private Cities departureCity;
+	private City departureCity;
+	
+	@Column(name ="layoverCity")
+	private City layoverCity;
 	
 	@Column(name = "arrivalCity")
-	private Cities arrivalCity;
-	
-	@ManyToOne
-	private Cities cities;
+	private City arrivalCity;
 	
 	@ManyToMany
-	private List<Users> users;
+	private City cities;
+	
+	@ManyToMany
+	private List<User> users;
 
 	public Long getId() {
 		return id;
@@ -84,36 +89,52 @@ public class Flights {
 	public void setCompany(String company) {
 		this.company = company;
 	}
+	
+	public int getPrice() {
+		return price;
+	}
 
-	public Cities getDepartureCity() {
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public City getDepartureCity() {
 		return departureCity;
 	}
 
-	public void setDepartureCity(Cities departureCity) {
+	public void setDepartureCity(City departureCity) {
 		this.departureCity = departureCity;
 	}
+	
+	public City getLayoverCities() {
+		return layoverCity;
+	}
 
-	public Cities getArrivalCity() {
+	public void setLayoverCities(City layoverCities) {
+		this.layoverCity = layoverCities;
+	}
+
+	public City getArrivalCity() {
 		return arrivalCity;
 	}
 
-	public void setArrivalCity(Cities arrivalCity) {
+	public void setArrivalCity(City arrivalCity) {
 		this.arrivalCity = arrivalCity;
 	}
 
-	public Cities getCities() {
+	public City getCities() {
 		return cities;
 	}
 
-	public void setCities(Cities cities) {
+	public void setCities(City cities) {
 		this.cities = cities;
 	}
 
-	public List<Users> getUsers() {
+	public List<User> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<Users> users) {
+	public void setUsers(List<User> users) {
 		this.users = users;
 	}
 	

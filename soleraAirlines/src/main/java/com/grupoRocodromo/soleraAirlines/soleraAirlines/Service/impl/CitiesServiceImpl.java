@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.CitiesService;
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.Cities;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.City;
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.repository.CitiesRepository;
 
 @Service
@@ -16,13 +16,13 @@ public class CitiesServiceImpl implements CitiesService {
 	private CitiesRepository citiesRepository;
 
 	@Override
-	public List<Cities> findAllCities() {
+	public List<City> findAllCities() {
 
 		return citiesRepository.findAll();
 	}
 
 	@Override
-	public Cities updateCity(Cities city) {
+	public City updateCity(City city) {
 
 		return citiesRepository.save(city);
 	}
@@ -38,7 +38,7 @@ public class CitiesServiceImpl implements CitiesService {
 	}
 
 	@Override
-	public Cities createCity(Cities city) {
+	public City createCity(City city) {
 
 		return citiesRepository.save(city);
 	}

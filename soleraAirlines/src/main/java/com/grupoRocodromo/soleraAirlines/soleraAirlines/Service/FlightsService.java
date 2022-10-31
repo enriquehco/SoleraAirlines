@@ -2,16 +2,17 @@ package com.grupoRocodromo.soleraAirlines.soleraAirlines.Service;
 
 import java.util.List;
 
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.Flights;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.Flight;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.User;
 
 public interface FlightsService {
 
-	List<Flights> findAllFlights();
+	List<Flight> findAllFlights();
 
-	Flights createFlight(Flights flights);
+	Flight createFlight(Flight flights);
 
 	boolean deleteFlight(Long id);
 
-	Flights updateFlight(Flights flights);
+	Flight updateFlight(Flight flights);
 
 }

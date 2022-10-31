@@ -2,17 +2,17 @@ package com.grupoRocodromo.soleraAirlines.soleraAirlines.Service;
 
 import java.util.List;
 
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.Users;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.User;
 
 public interface UsersService {
 	
-	List<Users> findAll();
+	List<User> findAll();
 	
-	Users createUser(Users users);
+	User createUser(User users);
 	
 	boolean deleteUser(Long id);
 	
-	Users updateUser(Users users);
+	User updateUser(User users);
 	
 	
 
