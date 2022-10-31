@@ -4,6 +4,7 @@ import ExpensesList from './ExpensesList';
 import ExpensesFilter from "../filters/ExpensesFilter";
 import Card from "../UI/Card";
 import "./Expenses.css";
+import ExpenseItems from './ExpenseItems';
 
 const Expenses = (props) => {
 
@@ -21,7 +22,15 @@ const Expenses = (props) => {
   return (
     <div>
       <Card className="expenses">
-        <ExpensesFilter selected={filteredYear} onSaveFilterYear={saveFilterYearHandler} />     
+        <ExpensesFilter selected={filteredYear} onSaveFilterYear={saveFilterYearHandler} /> 
+        <ExpenseItems key="Departure date"
+          departure="Company"
+          arrival="From"
+          company="To"
+          duration="Duration"
+          luggage="Luggage"
+          date="Price"
+          id_city="Someid" />
         <ExpensesList items={filteredExpenses} />   
       </Card>
     </div>
