@@ -3,7 +3,6 @@ package com.grupoRocodromo.soleraAirlines.soleraAirlines.Service;
 import java.util.List;
 
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.Flights;
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.Users;
 
 public interface FlightsService {
 
