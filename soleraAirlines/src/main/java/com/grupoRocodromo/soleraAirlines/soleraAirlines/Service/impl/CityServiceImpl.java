@@ -16,6 +16,12 @@ public class CityServiceImpl implements CityService {
 	private CityRepository cityRepository;
 
 	@Override
+	public City createCity(City city) {
+
+		return cityRepository.save(city);
+	}
+	
+	@Override
 	public List<City> findAllCities() {
 
 		return cityRepository.findAll();
@@ -36,11 +42,4 @@ public class CityServiceImpl implements CityService {
 			return false;
 		}
 	}
-
-	@Override
-	public City createCity(City city) {
-
-		return cityRepository.save(city);
-	}
-
 }

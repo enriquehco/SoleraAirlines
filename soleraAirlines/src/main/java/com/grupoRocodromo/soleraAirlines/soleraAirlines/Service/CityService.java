@@ -6,12 +6,7 @@ import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.City;
 
 public interface CityService {
 
-	public static City createCity(String name) {		
-		City newCity = new City();
-		newCity.setName(name);
-		
-		return newCity;
-	};
+	City createCity(City city);
 	
 	List<City> findAllCities();
 
