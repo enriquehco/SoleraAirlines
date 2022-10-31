@@ -1,54 +1,52 @@
 package com.grupoRocodromo.soleraAirlines.soleraAirlines.model;
 
 import java.util.Date;
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "flights")
 public class Flight {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
-	
-	@Column(name="dateTime")
+
+	@Column(name = "dateTime")
 	private Date dateTime;
-	
+
 	@Column(name = "duration")
 	private int duration;
-	
+
 	@Column(name = "luggage")
 	private boolean luggage;
 
 	@Column(name = "company")
 	private String company;
-	
+
 	@Column(name = "price")
 	private int price;
-	
-	@Column(name ="departureCity")
-	private City departureCity;
-	
-	@Column(name ="layoverCity")
-	private City layoverCity;
-	
+
+	@Column(name = "departureCity")
+	private String departureCity;
+
+	@Column(name = "layoverCity")
+	private String layoverCity;
+
 	@Column(name = "arrivalCity")
-	private City arrivalCity;
-	
-	/*@ManyToMany
-	private City cities;
-	
-	@ManyToMany
-	private List<User> users;*/
+	private String arrivalCity;
+
+	/*
+	 * @ManyToMany private City cities;
+	 * 
+	 * @ManyToMany private List<User> users;
+	 */
 
 	public Long getId() {
 		return id;
@@ -89,7 +87,7 @@ public class Flight {
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	
+
 	public int getPrice() {
 		return price;
 	}
@@ -98,47 +96,38 @@ public class Flight {
 		this.price = price;
 	}
 
-	public City getDepartureCity() {
+	public String getDepartureCity() {
 		return departureCity;
 	}
 
-	public void setDepartureCity(City departureCity) {
+	public void setDepartureCity(String departureCity) {
 		this.departureCity = departureCity;
 	}
-	
-	public City getLayoverCities() {
+
+	public String getLayoverCities() {
 		return layoverCity;
 	}
 
-	public void setLayoverCities(City layoverCities) {
+	public void setLayoverCities(String layoverCities) {
 		this.layoverCity = layoverCities;
 	}
 
-	public City getArrivalCity() {
+	public String getArrivalCity() {
 		return arrivalCity;
 	}
 
-	public void setArrivalCity(City arrivalCity) {
+	public void setArrivalCity(String arrivalCity) {
 		this.arrivalCity = arrivalCity;
 	}
 
-	public City getCities() {
-		return cities;
-	}
-
-	public void setCities(City cities) {
-		this.cities = cities;
-	}
-
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
-	
-	
-	
+	/*
+	 * public City getCities() { return cities; }
+	 * 
+	 * public void setCities(City cities) { this.cities = cities; }
+	 * 
+	 * public List<User> getUsers() { return users; }
+	 * 
+	 * public void setUsers(List<User> users) { this.users = users; }
+	 */
 
 }
