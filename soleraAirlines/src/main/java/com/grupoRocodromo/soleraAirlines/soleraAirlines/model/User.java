@@ -10,24 +10,24 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "users")
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "surname")
 	private String surname;
-	
+
 	@Column(name = "nationality")
 	private String nationality;
-	
+
 	@Column(name = "identification")
 	private String identification;
-	
+
 	@Column(name = "age")
 	private int age;
 
@@ -78,8 +78,8 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
-	
-	
+
+
+
 
 }

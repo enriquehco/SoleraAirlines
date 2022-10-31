@@ -9,8 +9,8 @@ import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.impl.UserService
 @RestController
 @RequestMapping("/users")
 public class UserController {
-	
+
 	@Autowired
-	private UserServiceImpl usersServiceImpl;
+	private UserServiceImpl userServiceImpl;
 
 }

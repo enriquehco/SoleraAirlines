@@ -9,8 +9,8 @@ import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.impl.CityService
 @RestController
 @RequestMapping("/cities")
 public class CityController {
-	
+
 	@Autowired
-	private CityServiceImpl citiesServiceImpl;
+	private CityServiceImpl cityServiceImpl;
 
 }

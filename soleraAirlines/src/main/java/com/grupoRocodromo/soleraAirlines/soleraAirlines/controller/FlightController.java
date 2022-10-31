@@ -11,6 +11,6 @@ import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.impl.FlightServi
 public class FlightController {
 
 	@Autowired
-	private FlightServiceImpl flightsServiceImpl;
+	private FlightServiceImpl flightServiceImpl;
 
 }
