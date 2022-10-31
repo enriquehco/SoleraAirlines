@@ -120,14 +120,23 @@ public class Flight {
 		this.arrivalCity = arrivalCity;
 	}
 
-	/*
-	 * public City getCities() { return cities; }
-	 * 
-	 * public void setCities(City cities) { this.cities = cities; }
-	 * 
-	 * public List<User> getUsers() { return users; }
-	 * 
-	 * public void setUsers(List<User> users) { this.users = users; }
-	 */
+//	public City getCities() {
+//		return cities;
+//	}
+//
+//	public void setCities(City cities) {
+//		this.cities = cities;
+//	}
+//
+//	public List<User> getUsers() {
+//		return users;
+//	}
+//
+//	public void setUsers(List<User> users) {
+//		this.users = users;
+//	}
+	
+	
+	
 
 }

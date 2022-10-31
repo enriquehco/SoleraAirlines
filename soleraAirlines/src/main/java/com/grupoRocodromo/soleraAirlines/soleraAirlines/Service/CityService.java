@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.City;
 
-public interface CitiesService {
+public interface CityService {
 	
 	
 	List<City> findAllCities();

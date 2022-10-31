@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.User;
 
-public interface UsersService {
+public interface UserService {
 	
 	List<User> findAll();
 	
