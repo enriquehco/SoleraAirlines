@@ -9,6 +9,7 @@ import ExpenseItems from './ExpenseItems';
 const Expenses = (props) => {
 
   const [filteredYear, setFilteredYear] = useState('2020');
+  const [showFilters, setShowFilters] = useState(false);
 
   const saveFilterYearHandler = (enteredFilterYear) => {
     setFilteredYear(enteredFilterYear)
@@ -22,16 +23,8 @@ const Expenses = (props) => {
   return (
     <div>
       <Card className="expenses">
-        <ExpensesFilter selected={filteredYear} onSaveFilterYear={saveFilterYearHandler} /> 
-        <ExpenseItems key="Departure date"
-          departure="Company"
-          arrival="From"
-          company="To"
-          duration="Duration"
-          luggage="Luggage"
-          date="Price"
-          id_city="Someid" />
-        <ExpensesList items={filteredExpenses} />   
+        {showFilters && <ExpensesFilter selected={filteredYear} onSaveFilterYear={saveFilterYearHandler} /> }
+        {showFilters && <ExpensesList items={filteredExpenses} />}   
       </Card>
     </div>
   );

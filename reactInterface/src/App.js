@@ -15,19 +15,20 @@ const dummy_flights = [
 //duration was amount
 
 function App() {
-  
 
   const [expenses, setExpenses] = useState(dummy_flights);
+  const [filterData, setFilterData] = useState();
 
-  const addExpenseHandler = (expense) => {
-    setExpenses(prevExpenses => {
+  const addExpenseHandler = (flightinfo) => {
+    {/*setExpenses(prevExpenses => {
       return [expense, ...prevExpenses];
-    });
+    });*/}
+    setFilterData(flightinfo);
   }
 
   return (
     <div className="App">
-      <h2>You are about to experience the power of street knowledge</h2>
+      <h2>Welcome to Solera Airlines</h2>
       <NewExpense onAddExpense={addExpenseHandler}/>
       <Expenses items={expenses} />
     </div>
