@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "cities")
-public class Cities {
+public class City {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
