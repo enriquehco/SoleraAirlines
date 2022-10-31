@@ -13,12 +13,30 @@ import jakarta.persistence.Table;
 @Table(name = "flights")
 public class Flight {
 
+	public Flight() {
+
+	}
+
+	public Flight(Long id, Date dateTime, int duration, boolean luggage, String company, int price,
+			String departureCity, String layoverCity, String arrivalCity) {
+		super();
+		this.id = id;
+		this.dateTime = dateTime;
+		this.duration = duration;
+		this.luggage = luggage;
+		this.company = company;
+		this.price = price;
+		this.departureCity = departureCity;
+		this.layoverCity = layoverCity;
+		this.arrivalCity = arrivalCity;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name="dateTime")
+	@Column(name = "dateTime")
 	private Date dateTime;
 
 	@Column(name = "duration")
@@ -33,20 +51,20 @@ public class Flight {
 	@Column(name = "price")
 	private int price;
 
-	@Column(name ="departureCity")
-	private City departureCity;
+	@Column(name = "departureCity")
+	private String departureCity;
 
-	@Column(name ="layoverCity")
-	private City layoverCity;
+	@Column(name = "layoverCity")
+	private String layoverCity;
 
 	@Column(name = "arrivalCity")
-	private City arrivalCity;
+	private String arrivalCity;
 
-	/*@ManyToMany
-	private City cities;
-
-	@ManyToMany
-	private List<User> users;*/
+	/*
+	 * @ManyToMany private City cities;
+	 * 
+	 * @ManyToMany private List<User> users;
+	 */
 
 	public Long getId() {
 		return id;
@@ -96,27 +114,27 @@ public class Flight {
 		this.price = price;
 	}
 
-	public City getDepartureCity() {
+	public String getDepartureCity() {
 		return departureCity;
 	}
 
-	public void setDepartureCity(City departureCity) {
+	public void setDepartureCity(String departureCity) {
 		this.departureCity = departureCity;
 	}
 
-	public City getLayoverCities() {
+	public String getLayoverCities() {
 		return layoverCity;
 	}
 
-	public void setLayoverCities(City layoverCities) {
+	public void setLayoverCities(String layoverCities) {
 		this.layoverCity = layoverCities;
 	}
 
-	public City getArrivalCity() {
+	public String getArrivalCity() {
 		return arrivalCity;
 	}
 
-	public void setArrivalCity(City arrivalCity) {
+	public void setArrivalCity(String arrivalCity) {
 		this.arrivalCity = arrivalCity;
 	}
 
@@ -135,8 +153,5 @@ public class Flight {
 //	public void setUsers(List<User> users) {
 //		this.users = users;
 //	}
-
-
-
 
 }

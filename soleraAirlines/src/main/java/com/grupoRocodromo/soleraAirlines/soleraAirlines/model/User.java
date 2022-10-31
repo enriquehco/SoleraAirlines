@@ -11,6 +11,20 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User {
 
+	public User() {
+
+	}
+
+	public User(Long id, String name, String surname, String nationality, String identification, int age) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.nationality = nationality;
+		this.identification = identification;
+		this.age = age;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
@@ -78,8 +92,5 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
-
-
 
 }
