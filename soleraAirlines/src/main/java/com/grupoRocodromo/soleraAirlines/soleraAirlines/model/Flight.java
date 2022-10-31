@@ -13,6 +13,24 @@ import jakarta.persistence.Table;
 @Table(name = "flights")
 public class Flight {
 
+	public Flight() {
+
+	}
+
+	public Flight(Long id, Date dateTime, int duration, boolean luggage, String company, int price,
+			String departureCity, String layoverCity, String arrivalCity) {
+		super();
+		this.id = id;
+		this.dateTime = dateTime;
+		this.duration = duration;
+		this.luggage = luggage;
+		this.company = company;
+		this.price = price;
+		this.departureCity = departureCity;
+		this.layoverCity = layoverCity;
+		this.arrivalCity = arrivalCity;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
@@ -135,8 +153,5 @@ public class Flight {
 //	public void setUsers(List<User> users) {
 //		this.users = users;
 //	}
-	
-	
-	
 
 }

@@ -1,6 +1,7 @@
 package com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,4 +44,11 @@ public class CityServiceImpl implements CityService {
 		return cityRepository.save(city);
 	}
 
+	@Override
+	public Optional<City> findById(Long id) {
+		
+		return cityRepository.findById(id);
+	}
+
+	
 }

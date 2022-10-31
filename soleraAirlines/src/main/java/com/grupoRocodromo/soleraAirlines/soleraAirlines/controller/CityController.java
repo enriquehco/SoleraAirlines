@@ -8,13 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.impl.CityServiceImpl;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.City;
 
 @RestController
 @RequestMapping("/cities")
 public class CityController {
 	
 	@Autowired
-	private CitiesServiceImpl citiesServiceImpl;
+	private CityServiceImpl citiesServiceImpl;
 	
 	
 	@GetMapping("/listCities")
