@@ -7,6 +7,6 @@ import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.City;
 
 
 @Repository
-public interface CitiesRepository extends JpaRepository<City, Long>{
+public interface CityRepository extends JpaRepository<City, Long>{
 
 }

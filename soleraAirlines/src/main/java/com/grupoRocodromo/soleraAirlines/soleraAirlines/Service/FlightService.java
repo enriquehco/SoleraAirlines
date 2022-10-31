@@ -5,7 +5,7 @@ import java.util.List;
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.Flight;
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.User;
 
-public interface FlightsService {
+public interface FlightService {
 
 	List<Flight> findAllFlights();
 

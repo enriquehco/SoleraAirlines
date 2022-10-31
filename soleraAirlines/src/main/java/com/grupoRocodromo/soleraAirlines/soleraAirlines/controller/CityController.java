@@ -4,13 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.impl.CitiesServiceImpl;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.impl.CityServiceImpl;
 
 @RestController
 @RequestMapping("/cities")
-public class CitiesController {
+public class CityController {
 	
 	@Autowired
-	private CitiesServiceImpl citiesServiceImpl;
+	private CityServiceImpl citiesServiceImpl;
 
 }

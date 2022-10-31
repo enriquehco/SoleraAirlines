@@ -5,30 +5,30 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.FlightsService;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.FlightService;
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.Flight;
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.repository.FlightsRepository;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.repository.FlightRepository;
 
 @Service
-public class FlightsServiceImpl implements FlightsService {
+public class FlightServiceImpl implements FlightService {
 
 	@Autowired
-	private FlightsRepository flightsRepository;
+	private FlightRepository flightRepository;
 
 	@Override
 	public List<Flight> findAllFlights() {
-		return flightsRepository.findAll();
+		return flightRepository.findAll();
 	}
 
 	@Override
 	public Flight createFlight(Flight flights) {
-		return flightsRepository.save(flights);
+		return flightRepository.save(flights);
 	}
 
 	@Override
 	public boolean deleteFlight(Long id) {
-		if (flightsRepository.existsById(id)) {
-			flightsRepository.deleteById(id);
+		if (flightRepository.existsById(id)) {
+			flightRepository.deleteById(id);
 			return true;
 		} else {
 			return false;
@@ -37,7 +37,7 @@ public class FlightsServiceImpl implements FlightsService {
 
 	@Override
 	public Flight updateFlight(Flight flights) {
-		return flightsRepository.save(flights);
+		return flightRepository.save(flights);
 	}
 
 }

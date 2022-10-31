@@ -5,31 +5,31 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.UsersService;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.UserService;
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.User;
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.repository.UsersRepository;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.repository.UserRepository;
 
 @Service
-public class UsersServiceImpl implements UsersService{
+public class UserServiceImpl implements UserService{
 
 	 @Autowired
-	 private UsersRepository usersrepository;
+	 private UserRepository userRepository;
 	
 	
 	@Override
 	public List<User> findAll() {
-		return usersrepository.findAll();
+		return userRepository.findAll();
 	}
 
 	@Override
 	public User createUser(User users) {
-		return usersrepository.save(users);
+		return userRepository.save(users);
 	}
 
 	@Override
 	public boolean deleteUser(Long id) {
-		if(usersrepository.existsById(id)) {
-			usersrepository.deleteById(id);
+		if(userRepository.existsById(id)) {
+			userRepository.deleteById(id);
 			return true;
 		}else {
 			return false;
@@ -38,7 +38,7 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public User updateUser(User users) {
-		return usersrepository.save(users);
+		return userRepository.save(users);
 	}
 
 }

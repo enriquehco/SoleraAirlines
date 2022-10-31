@@ -5,32 +5,32 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.CitiesService;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.CityService;
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.City;
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.repository.CitiesRepository;
+import com.grupoRocodromo.soleraAirlines.soleraAirlines.repository.CityRepository;
 
 @Service
-public class CitiesServiceImpl implements CitiesService {
+public class CityServiceImpl implements CityService {
 
 	@Autowired
-	private CitiesRepository citiesRepository;
+	private CityRepository cityRepository;
 
 	@Override
 	public List<City> findAllCities() {
 
-		return citiesRepository.findAll();
+		return cityRepository.findAll();
 	}
 
 	@Override
 	public City updateCity(City city) {
 
-		return citiesRepository.save(city);
+		return cityRepository.save(city);
 	}
 
 	@Override
 	public boolean deleteCity(Long id) {
-		if (citiesRepository.existsById(id)) {
-			citiesRepository.deleteById(id);
+		if (cityRepository.existsById(id)) {
+			cityRepository.deleteById(id);
 			return true;
 		} else {
 			return false;
@@ -40,7 +40,7 @@ public class CitiesServiceImpl implements CitiesService {
 	@Override
 	public City createCity(City city) {
 
-		return citiesRepository.save(city);
+		return cityRepository.save(city);
 	}
 
 }
