@@ -44,11 +44,11 @@ public class Flight {
 	@Column(name = "arrivalCity")
 	private City arrivalCity;
 	
-	@ManyToMany
+	/*@ManyToMany
 	private City cities;
 	
 	@ManyToMany
-	private List<User> users;
+	private List<User> users;*/
 
 	public Long getId() {
 		return id;
