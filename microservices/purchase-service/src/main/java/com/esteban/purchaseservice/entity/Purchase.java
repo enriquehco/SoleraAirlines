@@ -16,6 +16,7 @@ public class Purchase {
 	
 	
 	private Date purchaseDate;
+	private Double finalPrice;
 
 
 	public Long getId() {
@@ -35,6 +36,16 @@ public class Purchase {
 
 	public void setPurchaseDate(Date purchaseDate) {
 		this.purchaseDate = purchaseDate;
+	}
+
+
+	public Double getFinalPrice() {
+		return finalPrice;
+	}
+
+
+	public void setFinalPrice(Double finalPrice) {
+		this.finalPrice = finalPrice;
 	}
 	
 	

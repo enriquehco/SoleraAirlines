@@ -27,6 +27,12 @@ public class PurchaseServiceImpl implements PurchaseService {
 		List<Flight> flights = restTemplate.getForObject("http://localhost:8082/flights/purchase/" + purchaseId, List.class);
 		return flights;
 	}
+	
+	public Double getPricePerUser(Flight flight, int age, boolean luggage) {
+		
+		Double pricePerUser = restTemplate.getForObject(null, null);
+		return pricePerUser;
+	}
 
 	@Override
 	public List<Purchase> getAllPurchases() {
