@@ -11,6 +11,10 @@ const Expenses = (props) => {
   const [filteredYear, setFilteredYear] = useState('2020');
   const [showFilters, setShowFilters] = useState(false);
 
+  const showFiltersHandler = () => {
+    setShowFilters(!showFilters);
+  }
+
   const saveFilterYearHandler = (enteredFilterYear) => {
     setFilteredYear(enteredFilterYear)
     console.log(filteredYear);
@@ -23,8 +27,9 @@ const Expenses = (props) => {
   return (
     <div>
       <Card className="expenses">
-        {showFilters && <ExpensesFilter selected={filteredYear} onSaveFilterYear={saveFilterYearHandler} /> }
-        {showFilters && <ExpensesList items={filteredExpenses} />}   
+        {props.showf && <button onClick={showFiltersHandler}>Show filters</button>}
+        {(props.showf && showFilters) && <ExpensesFilter selected={filteredYear} onSaveFilterYear={saveFilterYearHandler} /> }
+        {props.showf && <ExpensesList items={filteredExpenses} />}   
       </Card>
     </div>
   );

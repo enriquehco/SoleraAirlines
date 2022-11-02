@@ -11,6 +11,7 @@ const ListArrivals = (props) => {
         value={EnteredArrival}
         onChange={(e) => {setEnteredArrival(e.target.value); props.onArrivalSelected(e,e.target.value)}}
       >
+        <option value="--select--">--select--</option>
         <option value="otro sitio">otro sitio</option>
         <option value="nunca jamas">nunca jamas</option>
       </select>

@@ -8,15 +8,9 @@ const ExpenseForm = (props) => {
   const [EnteredArrival, setEnteredArrival] = useState("--select--");
   const [isDeparture, setIsDeparture] = useState(false);
   const [isArrival, setIsArrival] = useState(false);
-  const [isCheckedOneWay, setIsCheckedOneWay] = useState(false)
+  const [isCheckedOneWay, setIsCheckedOneWay] = useState(false);
 
-  const departuresList = [
-    "roma",
-    "paris",
-    "bhagdad",
-    "iowa",
-    "sevilla"
-  ];
+  const departuresList = ["roma", "paris", "bhagdad", "iowa", "sevilla"];
 
   const titleChangeHandler = (event) => {
     setEnteredDeparture(event.target.value);
@@ -24,36 +18,42 @@ const ExpenseForm = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-
-    const expenseData = {
-      departure: EnteredDeparture,
-      arrival: EnteredArrival,
-      oneway: isCheckedOneWay
-    };
-    props.onSaveExpenseData(expenseData);
+    if (isDeparture && isArrival) {
+      const expenseData = {
+        departure: EnteredDeparture,
+        arrival: EnteredArrival,
+        oneway: isCheckedOneWay,
+      };
+      props.onSaveExpenseData(expenseData);
+    }
   };
 
   const cancelHandler = () => {
     props.onCancelSubmit();
   };
 
-  const departureHandler = (event) => {
+  const departureHandler = (event, departureData) => {
     event.preventDefault();
-    if(EnteredDeparture != "--select--"){
-        setIsDeparture(true); 
+    if (departureData != "--select--") {
+      setIsDeparture(true);
+    } else {
+      setIsDeparture(false);
     }
   };
 
-  const arrivalHandler = (event,arrivalData) => {
+  const arrivalHandler = (event, arrivalData) => {
     event.preventDefault();
-    setEnteredArrival(arrivalData);
-    console.log(arrivalData);
-    setIsArrival(true);
-  }
+    if (arrivalData != "--select--") {
+      setEnteredArrival(arrivalData);
+      setIsArrival(true);
+    } else {
+      setIsArrival(false);
+    }
+  };
 
   const checkHandler = () => {
-    setIsCheckedOneWay(!isCheckedOneWay)
-  }
+    setIsCheckedOneWay(!isCheckedOneWay);
+  };
 
   return (
     <form onSubmit={submitHandler}>
@@ -64,17 +64,27 @@ const ExpenseForm = (props) => {
           <select
             id="departures"
             value={EnteredDeparture}
-            onChange={(e) => setEnteredDeparture(e.target.value)}
+            onChange={(e) => {setEnteredDeparture(e.target.value); departureHandler(e,e.target.value)}}
           >
-            <option >--select--</option>
+            <option>--select--</option>
             {departuresList.map((item) => (
-                <option value={item}>{item}</option>
+              <option value={item}>{item}</option>
             ))}
           </select>
-          <button onClick={departureHandler}>Continue</button>
+          {/*<button onClick={departureHandler}>Continue</button>*/}
         </div>
-        {isDeparture && <ListArrivals onArrivalSelected={arrivalHandler}/>}
-        {isArrival && <div><input type="checkbox" id="checkbox" checked={isCheckedOneWay} onChange={checkHandler}/><label htmlFor="checkbox">One Way Trip?</label></div>}
+        {isDeparture && <ListArrivals onArrivalSelected={arrivalHandler} />}
+        {isArrival && (
+          <div>
+            <input
+              type="checkbox"
+              id="checkbox"
+              checked={isCheckedOneWay}
+              onChange={checkHandler}
+            />
+            <label htmlFor="checkbox">One Way Trip?</label>
+          </div>
+        )}
       </div>
       <div className="new-expense__actions">
         <button onClick={cancelHandler}>Cancel</button>
