@@ -32,38 +32,33 @@ public class UserController {
 		}
 		return ResponseEntity.ok(users);
 	}
-	
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<User> getUser(@PathVariable("id") Long id){
-		
+	public ResponseEntity<User> getUser(@PathVariable("id") Long id) {
+
 		User user = userServiceImpl.getUserById(id);
 		if (user == null) {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(user);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<User> saveUser(@RequestBody User user){
+	public ResponseEntity<User> saveUser(@RequestBody User user) {
 		User newUser = userServiceImpl.createUser(user);
 		return ResponseEntity.ok(newUser);
 	}
-	
-	
+
 	@GetMapping("/flights/{userId}")
-	public ResponseEntity<List<Flight>> getFlightsByUserId(@PathVariable("userId") Long userId){
-		
+	public ResponseEntity<List<Flight>> getFlightsByUserId(@PathVariable("userId") Long userId) {
+
 		User user = userServiceImpl.getUserById(userId);
-		if (user==null) {
+		if (user == null) {
 			return ResponseEntity.notFound().build();
 		}
-		
-		List<Flight> flights = userServiceImpl.getFlights(userId);
+
+		List<Flight> flights = userServiceImpl.getFlightsByUserId(userId);
 		return ResponseEntity.ok(flights);
 	}
-	
-	
-	
 
 }

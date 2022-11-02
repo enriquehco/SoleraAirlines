@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.esteban.cityservice.entity.City;
+import com.esteban.cityservice.model.Flight;
 import com.esteban.cityservice.service.impl.CityServiceImpl;
 
 @RestController
@@ -41,23 +42,24 @@ public class CityController {
 		}
 		return ResponseEntity.ok(city);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<City> saveCity(@RequestBody City city ){
-		
+	public ResponseEntity<City> saveCity(@RequestBody City city) {
+
 		City newCity = cityServiceImpl.createCity(city);
 		return ResponseEntity.ok(newCity);
 	}
-	
-	@GetMapping("/flight/{flightId}")
-	public ResponseEntity<List<City>> listCitiesByFlightId(@PathVariable Long id){
-		
-		List<City> cities = cityServiceImpl.getCitiessByFlightId(id);
-		if(cities.isEmpty()) {
-			return ResponseEntity.noContent().build();
+
+	@GetMapping("/flight/{cityId}")
+	public ResponseEntity<List<Flight>> listCitiesByFlightId(@PathVariable("cityId") Long cityId) {
+
+		City city = cityServiceImpl.getCitytById(cityId);
+		if (city == null) {
+			return ResponseEntity.notFound().build();
 		}
-		
-		return ResponseEntity.ok(cities);
-		
+
+		List<Flight> flights = cityServiceImpl.getFlightsByCityId(cityId);
+		return ResponseEntity.ok(flights);
+
 	}
 }

@@ -13,6 +13,6 @@ public interface CityService {
 
 	City getCitytById(Long id);
 	
-	List<City> getCitiessByFlightId(Long flightId);
+	//List<City> getCitiessByFlightId(Long flightId);
 
 }

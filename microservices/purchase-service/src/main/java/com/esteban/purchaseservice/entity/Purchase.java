@@ -1,4 +1,6 @@
-package com.esteban.cityservice.entity;
+package com.esteban.purchaseservice.entity;
+
+import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -6,37 +8,35 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class City {
-
+public class Purchase {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	
+	private Date purchaseDate;
 
-	private String name;
-	//private Long flightId;
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+
+	public Date getPurchaseDate() {
+		return purchaseDate;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
-	/*public Long getFlightId() {
-		return flightId;
+	public void setPurchaseDate(Date purchaseDate) {
+		this.purchaseDate = purchaseDate;
 	}
-
-	public void setFlightId(Long flightId) {
-		this.flightId = flightId;
-	}*/
+	
+	
 
 }

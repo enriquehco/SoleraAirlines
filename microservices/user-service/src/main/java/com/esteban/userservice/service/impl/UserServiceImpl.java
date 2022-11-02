@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public List<Flight> getFlights(Long userId) {
+	public List<Flight> getFlightsByUserId(Long userId) {
 
 		List<Flight> flights = restTemplate.getForObject("http://localhost:8082/flights/user/" + userId, List.class);
 		return flights;

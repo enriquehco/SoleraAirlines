@@ -15,15 +15,33 @@ public class Flight {
 	private Long id;
 
 	private String company;
-	private boolean cabinLuggage;
-	private int basePrice;
+	private boolean luggage;
+	private int price;
 	private String departureCity;
 	private int duration;
 	private Date dateTime;
 	private String layoverCity;
 	private String arrivalCity;
 	private Long userId;
+	private Long cityId;
+	private Long purchaseId;
 	
+
+	public Long getPurchaseId() {
+		return purchaseId;
+	}
+
+	public void setPurchaseId(Long purchaseId) {
+		this.purchaseId = purchaseId;
+	}
+
+	public Long getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(Long cityId) {
+		this.cityId = cityId;
+	}
 
 	public Long getUserId() {
 		return userId;
@@ -49,20 +67,20 @@ public class Flight {
 		this.company = company;
 	}
 
-	public boolean isCabinLuggage() {
-		return cabinLuggage;
+	public boolean isLuggage() {
+		return luggage;
 	}
 
-	public void setCabinLuggage(boolean cabinLuggage) {
-		this.cabinLuggage = cabinLuggage;
+	public void setLuggage(boolean luggage) {
+		this.luggage = luggage;
 	}
 
-	public int getBasePrice() {
-		return basePrice;
+	public int getPrice() {
+		return price;
 	}
 
-	public void setBasePrice(int basePrice) {
-		this.basePrice = basePrice;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
 	public String getDepartureCity() {

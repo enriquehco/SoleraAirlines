@@ -40,6 +40,11 @@ public class FlightServiceImpl implements FlightService {
 		return flightRespository.findByCityId(cityId);
 				
 	}
+
+	@Override
+	public List<Flight> getFlightsByPurchaseId(Long purchaseId) {
+		return flightRespository.findByPurchaseId(purchaseId);
+	}
 	
 	
 	
