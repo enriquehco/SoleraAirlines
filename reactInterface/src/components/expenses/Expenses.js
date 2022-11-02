@@ -20,16 +20,16 @@ const Expenses = (props) => {
     console.log(filteredYear);
   };
 
-  const filteredExpenses = props.items.filter(expense => {
+  {/*const filteredExpenses = props.items.filter(expense => {
     return expense.date.getFullYear().toString() === filteredYear;
-  });
+  });*/}
 
   return (
     <div>
       <Card className="expenses">
         {props.showf && <button onClick={showFiltersHandler}>Show filters</button>}
         {(props.showf && showFilters) && <ExpensesFilter selected={filteredYear} onSaveFilterYear={saveFilterYearHandler} /> }
-        {props.showf && <ExpensesList items={filteredExpenses} />}   
+        {props.showf && <ExpensesList items={props.items} />}   
       </Card>
     </div>
   );
