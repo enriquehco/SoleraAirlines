@@ -62,7 +62,7 @@ public class Flight {
 
 	/*
 	 * @ManyToMany private City cities;
-	 * 
+	 *
 	 * @ManyToMany private List<User> users;
 	 */
 

@@ -15,7 +15,7 @@ public class CityServiceImpl implements CityService {
 
 	@Autowired
 	private CityRepository cityRepository;
-	
+
 	@Override
 	public List<City> findAllCities() {
 
@@ -46,9 +46,9 @@ public class CityServiceImpl implements CityService {
 
 	@Override
 	public Optional<City> findById(Long id) {
-		
+
 		return cityRepository.findById(id);
 	}
 
-	
+
 }

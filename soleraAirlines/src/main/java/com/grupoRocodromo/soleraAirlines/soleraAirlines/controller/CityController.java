@@ -16,11 +16,11 @@ public class CityController {
 
 	@Autowired
 	private CityServiceImpl citiesServiceImpl;
-	
-	
+
+
 	@GetMapping("/listCities")
 	public List<City> showAllCities(){
-		
+
 		return citiesServiceImpl.findAllCities();
 	}
 

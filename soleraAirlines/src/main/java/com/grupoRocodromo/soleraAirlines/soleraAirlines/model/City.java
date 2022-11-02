@@ -10,9 +10,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "cities")
 public class City {
-	
+
 	public City() {
-		
+
 	}
 
 	public City(Long id, String name) {

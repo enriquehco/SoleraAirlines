@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.Service.FlightService;
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.City;
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.Flight;
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.repository.FlightRepository;
 
@@ -14,15 +13,14 @@ import com.grupoRocodromo.soleraAirlines.soleraAirlines.repository.FlightReposit
 public class FlightServiceImpl implements FlightService {
 
 	@Autowired
-	private FlightRepository flightRepository;
+	private static FlightRepository flightRepository;
 
 	@Override
 	public Flight createFlight(Flight flights) {
 		return flightRepository.save(flights);
 	}
-	
-	@Override
-	public List<Flight> findAllFlights() {
+
+	public static List<Flight> findAllFlights() {
 		return flightRepository.findAll();
 	}
 
@@ -30,7 +28,7 @@ public class FlightServiceImpl implements FlightService {
 	public Flight updateFlight(Flight flights) {
 		return flightRepository.save(flights);
 	}
-	
+
 	@Override
 	public boolean deleteFlight(Long id) {
 		if (flightRepository.existsById(id)) {
