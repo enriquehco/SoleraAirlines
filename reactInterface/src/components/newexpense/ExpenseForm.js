@@ -32,9 +32,9 @@ const ExpenseForm = (props) => {
     props.onCancelSubmit();
   };
 
-  const departureHandler = (event) => {
+  const departureHandler = (event, departureData) => {
     event.preventDefault();
-    if (EnteredDeparture != "--select--") {
+    if (departureData != "--select--") {
       setIsDeparture(true);
     } else {
       setIsDeparture(false);
@@ -64,14 +64,14 @@ const ExpenseForm = (props) => {
           <select
             id="departures"
             value={EnteredDeparture}
-            onChange={(e) => setEnteredDeparture(e.target.value)}
+            onChange={(e) => {setEnteredDeparture(e.target.value); departureHandler(e,e.target.value)}}
           >
             <option>--select--</option>
             {departuresList.map((item) => (
               <option value={item}>{item}</option>
             ))}
           </select>
-          <button onClick={departureHandler}>Continue</button>
+          {/*<button onClick={departureHandler}>Continue</button>*/}
         </div>
         {isDeparture && <ListArrivals onArrivalSelected={arrivalHandler} />}
         {isArrival && (
