@@ -20,7 +20,6 @@ public interface FlightService {
 
 	// Looks for all the available flights with the selected departure city
 	public static List<Flight> findAvailableFlights(String departureCity){
-
 		List<Flight> flights;
 		flights = findAllFlights();
 
@@ -34,23 +33,21 @@ public interface FlightService {
 	}
 
 	// Sets final price depending on user data
-	public static double getFinalPrice (Flight flight, List<User> users) {
+	public static double setPricePerUser (Flight flight, int age, boolean luggage) {
 		double discount = 1;
-
-		for (User user :users) {
-			if (user.getAge() < 2) {
-				users.remove(users.indexOf(user));
-			}
-			else if (user.getAge() >= 2 && user.getAge() <= 9) {
-				discount -= 0.1;
-			}
+		
+		if (age < 2) {
+			discount = 0;
+		}
+		else if (age >= 2 && age <= 9) {
+			discount -= 0.5;
 		}
 
-		if (discount <= 0) {
-			discount = 0.2;
+		if (flight.isLuggage() && luggage) {
+			discount += 0.2;
 		}
 
-		double finalPrice = flight.getbasePrice() * users.size() * discount;
+		double finalPrice = flight.getbasePrice() * discount;
 
 		return finalPrice;
 	}
