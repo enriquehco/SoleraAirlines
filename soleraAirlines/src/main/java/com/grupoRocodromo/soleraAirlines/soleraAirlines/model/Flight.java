@@ -17,13 +17,13 @@ public class Flight {
 
 	}
 
-	public Flight(Long id, Date dateTime, int duration, boolean luggage, String company, int basePrice,
+	public Flight(Long id, Date dateTime, int duration, boolean cabinLuggage, String company, int basePrice,
 			String departureCity, String layoverCity, String arrivalCity) {
 		super();
 		this.id = id;
 		this.dateTime = dateTime;
 		this.duration = duration;
-		this.luggage = luggage;
+		this.cabinLuggage = cabinLuggage;
 		this.company = company;
 		this.basePrice = basePrice;
 		this.departureCity = departureCity;
@@ -42,8 +42,8 @@ public class Flight {
 	@Column(name = "duration")
 	private int duration;
 
-	@Column(name = "luggage")
-	private boolean luggage;
+	@Column(name = "cabinLuggage")
+	private boolean cabinLuggage;
 
 	@Column(name = "company")
 	private String company;
@@ -90,12 +90,12 @@ public class Flight {
 		this.duration = duration;
 	}
 
-	public boolean isLuggage() {
-		return luggage;
+	public boolean isCabinLuggage() {
+		return cabinLuggage;
 	}
 
-	public void setLuggage(boolean luggage) {
-		this.luggage = luggage;
+	public void setCabinLuggage(boolean cabinLuggage) {
+		this.cabinLuggage = cabinLuggage;
 	}
 
 	public String getCompany() {

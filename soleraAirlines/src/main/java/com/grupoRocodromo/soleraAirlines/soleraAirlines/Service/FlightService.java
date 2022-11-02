@@ -43,7 +43,7 @@ public interface FlightService {
 			discount -= 0.5;
 		}
 
-		if (flight.isLuggage() && luggage) {
+		if (luggage) {
 			discount += 0.2;
 		}
 
