@@ -17,6 +17,7 @@ public class Purchase {
 	
 	private Date purchaseDate;
 	private Double finalPrice;
+	private boolean success;
 
 
 	public Long getId() {
@@ -46,6 +47,16 @@ public class Purchase {
 
 	public void setFinalPrice(Double finalPrice) {
 		this.finalPrice = finalPrice;
+	}
+
+
+	public boolean isSuccess() {
+		return success;
+	}
+
+
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 	
 	

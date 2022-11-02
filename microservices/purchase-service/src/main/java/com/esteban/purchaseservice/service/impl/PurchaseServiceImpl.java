@@ -28,9 +28,9 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return flights;
 	}
 	
-	public Double getPricePerUser(Flight flight, int age, boolean luggage) {
+	public Double getPricePerUser(int basePrice, int age, boolean luggage) {
 		
-		Double pricePerUser = restTemplate.getForObject(null, null);
+		Double pricePerUser = restTemplate.getForObject("http://localhost:8082/pricePerUser/"+basePrice+"/"+age+"/"+luggage, Double.class);
 		return pricePerUser;
 	}
 
