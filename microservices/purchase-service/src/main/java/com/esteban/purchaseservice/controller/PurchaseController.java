@@ -19,22 +19,20 @@ import com.esteban.purchaseservice.service.impl.PurchaseServiceImpl;
 @RequestMapping("/purchases")
 public class PurchaseController {
 
-
 	@Autowired
 	private PurchaseServiceImpl purchaseServiceImpl;
 
-
 	@GetMapping("/listPurchases")
-	public ResponseEntity<List<Purchase>> listAllPurchases(){
+	public ResponseEntity<List<Purchase>> listAllPurchases() {
 		List<Purchase> purchases = purchaseServiceImpl.getAllPurchases();
-		if(purchases.isEmpty()) {
+		if (purchases.isEmpty()) {
 			return ResponseEntity.noContent().build();
 		}
 		return ResponseEntity.ok(purchases);
 	}
 
 	@GetMapping("/{purchaseId}")
-	public ResponseEntity<Purchase> getPurchase(@PathVariable ("purchaseId") Long id){
+	public ResponseEntity<Purchase> getPurchase(@PathVariable("purchaseId") Long id) {
 
 		Purchase purchase = purchaseServiceImpl.getPurchaseById(id);
 		if (purchase == null) {
@@ -49,8 +47,8 @@ public class PurchaseController {
 		return ResponseEntity.ok(newPurchase);
 	}
 
-	@GetMapping("flights/{purchaseId}")
-	public ResponseEntity<List<Flight>> getFlightsByPurchaseId(@PathVariable("purchaseId") Long purchaseId){
+	@GetMapping("/flights/{purchaseId}")
+	public ResponseEntity<List<Flight>> getFlightsByPurchaseId(@PathVariable("purchaseId") Long purchaseId) {
 
 		Purchase purchase = purchaseServiceImpl.getPurchaseById(purchaseId);
 		if (purchase == null) {
@@ -61,7 +59,12 @@ public class PurchaseController {
 		return ResponseEntity.ok(flights);
 
 	}
-
-
+	
+	@GetMapping("/userPrice/{basePrice}/{age}/{luggage}")
+	public ResponseEntity<Double> getFinalPricePerUser(@PathVariable("basePrice")int basePrice, @PathVariable("age")int age,@PathVariable("luggage") boolean luggage) {
+		
+		Double price = purchaseServiceImpl.getPricePerUser(basePrice, age, luggage);
+		return ResponseEntity.ok(price);
+	}
 
 }
