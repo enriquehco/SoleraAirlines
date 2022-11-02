@@ -16,7 +16,7 @@ public class Flight {
 
 	private String company;
 	private boolean cabinLuggage;
-	private int basePrice;
+	private Double basePrice;
 	private String departureCity;
 	private int duration;
 	private Date dateTime;
@@ -75,11 +75,11 @@ public class Flight {
 		this.cabinLuggage = luggage;
 	}
 
-	public int getbasePrice() {
+	public Double getbasePrice() {
 		return basePrice;
 	}
 
-	public void setbasePrice(int basePrice) {
+	public void setbasePrice(Double basePrice) {
 		this.basePrice = basePrice;
 	}
 

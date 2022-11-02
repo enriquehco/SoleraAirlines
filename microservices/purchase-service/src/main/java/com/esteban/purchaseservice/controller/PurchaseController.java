@@ -66,5 +66,12 @@ public class PurchaseController {
 		Double price = purchaseServiceImpl.getPricePerUser(basePrice, age, luggage);
 		return ResponseEntity.ok(price);
 	}
+	
+	@GetMapping("/saleCompleted/{surname}")
+	public ResponseEntity<Boolean> getStatusOfSale(@PathVariable("surname") String surname){
+		
+		boolean success = purchaseServiceImpl.purchaseCompleted(surname);
+		return ResponseEntity.ok(success);
+	}
 
 }
