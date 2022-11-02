@@ -9,25 +9,39 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class Users {
-	
+public class User {
+
+	public User() {
+
+	}
+
+	public User(Long id, String name, String surname, String nationality, String identification, int age) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.surname = surname;
+		this.nationality = nationality;
+		this.identification = identification;
+		this.age = age;
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "surname")
 	private String surname;
-	
+
 	@Column(name = "nationality")
 	private String nationality;
-	
+
 	@Column(name = "identification")
 	private String identification;
-	
+
 	@Column(name = "age")
 	private int age;
 
@@ -78,8 +92,5 @@ public class Users {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
-	
-	
 
 }

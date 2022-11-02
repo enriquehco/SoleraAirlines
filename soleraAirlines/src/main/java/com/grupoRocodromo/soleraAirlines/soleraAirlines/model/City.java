@@ -9,13 +9,23 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "cities")
-public class Cities {
+public class City {
+
+	public City() {
+
+	}
+
+	public City(Long id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private Long id;
-	
+
 	@Column(name="name")
 	private String name;
 
@@ -34,8 +44,8 @@ public class Cities {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-	
-	
+
+
+
+
 }
