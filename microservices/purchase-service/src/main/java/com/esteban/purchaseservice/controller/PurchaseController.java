@@ -61,7 +61,7 @@ public class PurchaseController {
 	}
 	
 	@GetMapping("/userPrice/{basePrice}/{age}/{luggage}")
-	public ResponseEntity<Double> getFinalPricePerUser(@PathVariable("basePrice")int basePrice, @PathVariable("age")int age,@PathVariable("luggage") boolean luggage) {
+	public ResponseEntity<Double> getFinalPricePerUser(@PathVariable int basePrice, @PathVariable int age,@PathVariable boolean luggage) {
 		
 		Double price = purchaseServiceImpl.getPricePerUser(basePrice, age, luggage);
 		return ResponseEntity.ok(price);
