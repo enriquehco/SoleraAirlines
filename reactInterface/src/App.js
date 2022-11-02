@@ -16,21 +16,31 @@ const dummy_flights = [
 
 function App() {
 
+  const [flightObjects, setFlightObjects] = useState([]);
   const [expenses, setExpenses] = useState(dummy_flights);
   const [filterData, setFilterData] = useState();
+  const [showFlights, setShowFlights] = useState(false);
 
   const addExpenseHandler = (flightinfo) => {
     {/*setExpenses(prevExpenses => {
       return [expense, ...prevExpenses];
     });*/}
     setFilterData(flightinfo);
+    setShowFlights(true);
+  }
+
+  const getFilteredFlights = () =>{
+    {/* Make petition to api using filterData to get flights
+    -city of departure
+    -city of arrival*/
+    }
   }
 
   return (
     <div className="App">
       <h2>Welcome to Solera Airlines</h2>
       <NewExpense onAddExpense={addExpenseHandler}/>
-      <Expenses items={expenses} />
+      <Expenses items={flightObjects} filters={filterData} showf={showFlights}/>
     </div>
   );
 }

@@ -6,7 +6,7 @@ import "./ExpensesList.css";
 const ExpensesList = (props) => {
 
   if (props.items.length === 0) {
-    return <h2 className="expenses-list__fallback">No expenses found for this year.</h2>
+    return <h2 className="expenses-list__fallback">No expenses found for these filters.</h2>
   }
 
   return (

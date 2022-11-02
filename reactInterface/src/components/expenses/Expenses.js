@@ -23,8 +23,8 @@ const Expenses = (props) => {
   return (
     <div>
       <Card className="expenses">
-        {showFilters && <ExpensesFilter selected={filteredYear} onSaveFilterYear={saveFilterYearHandler} /> }
-        {showFilters && <ExpensesList items={filteredExpenses} />}   
+        {props.showf && <ExpensesFilter selected={filteredYear} onSaveFilterYear={saveFilterYearHandler} /> }
+        {props.showf && <ExpensesList items={filteredExpenses} />}   
       </Card>
     </div>
   );
