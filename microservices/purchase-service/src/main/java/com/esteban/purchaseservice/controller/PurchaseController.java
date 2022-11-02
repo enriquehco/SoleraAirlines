@@ -59,17 +59,17 @@ public class PurchaseController {
 		return ResponseEntity.ok(flights);
 
 	}
-	
+
 	@GetMapping("/userPrice/{basePrice}/{age}/{luggage}")
 	public ResponseEntity<Double> getFinalPricePerUser(@PathVariable int basePrice, @PathVariable int age,@PathVariable boolean luggage) {
-		
+
 		Double price = purchaseServiceImpl.getPricePerUser(basePrice, age, luggage);
 		return ResponseEntity.ok(price);
 	}
-	
+
 	@GetMapping("/saleCompleted/{surname}")
 	public ResponseEntity<Boolean> getStatusOfSale(@PathVariable("surname") String surname){
-		
+
 		boolean success = purchaseServiceImpl.purchaseCompleted(surname);
 		return ResponseEntity.ok(success);
 	}

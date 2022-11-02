@@ -12,5 +12,5 @@ import com.esteban.purchaseservice.entity.Purchase;
 public interface PurchaseRepository extends JpaRepository<Purchase, Long>{
 
 	List<Purchase> findByUserId(Long userId);
-	
+
 }

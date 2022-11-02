@@ -11,7 +11,7 @@ public interface PurchaseService {
 	Purchase createPurchase(Purchase purchase);
 
 	Purchase getPurchaseById(Long id);
-	
+
 	Boolean purchaseCompleted(String surname);
 
 
