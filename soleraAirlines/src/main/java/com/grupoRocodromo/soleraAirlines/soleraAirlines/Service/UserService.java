@@ -14,6 +14,15 @@ public interface UserService {
 
 	User updateUser(User users);
 
+	// Checks surname for completion of the sale
+	public static boolean saleComplete (User user) {
+		boolean success = true;
 
+		if (user.getSurname().toLowerCase().equals("error")) {
+			success = false;
+		}
+
+		return success;
+	}
 
 }
