@@ -17,7 +17,7 @@ public class Flight {
 
 	}
 
-	public Flight(Long id, Date dateTime, int duration, boolean luggage, String company, int price,
+	public Flight(Long id, Date dateTime, int duration, boolean luggage, String company, int basePrice,
 			String departureCity, String layoverCity, String arrivalCity) {
 		super();
 		this.id = id;
@@ -25,7 +25,7 @@ public class Flight {
 		this.duration = duration;
 		this.luggage = luggage;
 		this.company = company;
-		this.price = price;
+		this.basePrice = basePrice;
 		this.departureCity = departureCity;
 		this.layoverCity = layoverCity;
 		this.arrivalCity = arrivalCity;
@@ -49,7 +49,7 @@ public class Flight {
 	private String company;
 
 	@Column(name = "price")
-	private int price;
+	private int basePrice;
 
 	@Column(name = "departureCity")
 	private String departureCity;
@@ -106,12 +106,12 @@ public class Flight {
 		this.company = company;
 	}
 
-	public int getPrice() {
-		return price;
+	public int getbasePrice() {
+		return basePrice;
 	}
 
-	public void setPrice(int price) {
-		this.price = price;
+	public void setbasePrice(int basePrice) {
+		this.basePrice = basePrice;
 	}
 
 	public String getDepartureCity() {
