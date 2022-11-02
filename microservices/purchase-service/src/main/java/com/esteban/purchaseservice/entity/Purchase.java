@@ -9,12 +9,12 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Purchase {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	
+
+
 	private Date purchaseDate;
 
 
@@ -36,7 +36,7 @@ public class Purchase {
 	public void setPurchaseDate(Date purchaseDate) {
 		this.purchaseDate = purchaseDate;
 	}
-	
-	
+
+
 
 }

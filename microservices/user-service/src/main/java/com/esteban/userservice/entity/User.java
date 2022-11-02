@@ -17,8 +17,8 @@ public class User {
 	private String nationality;
 	private String identification;
 	private int age;
-	
-	
+
+
 
 	public Long getId() {
 		return id;
@@ -68,6 +68,6 @@ public class User {
 		this.age = age;
 	}
 
-	
+
 
 }

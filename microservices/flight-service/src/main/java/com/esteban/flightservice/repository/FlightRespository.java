@@ -9,7 +9,7 @@ import com.esteban.flightservice.entity.Flight;
 
 @Repository
 public interface FlightRespository extends JpaRepository<Flight, Long> {
-	
+
 	List<Flight> findByUserId(Long userId);
 	List<Flight> findByCityId(Long cityId);
 	List<Flight> findByPurchaseId(Long purchaseId);

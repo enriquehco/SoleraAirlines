@@ -25,7 +25,7 @@ public class Flight {
 	private Long userId;
 	private Long cityId;
 	private Long purchaseId;
-	
+
 
 	public Long getPurchaseId() {
 		return purchaseId;

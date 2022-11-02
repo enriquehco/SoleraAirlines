@@ -12,10 +12,10 @@ public interface FlightService {
 	Flight createFlight(Flight flight);
 
 	Flight getFlightById(Long id);
-	
+
 	List<Flight> getFlightsByUserId(Long userId);
 
 	List<Flight> getFlightsByCityId(Long cityId);
-	
+
 	List<Flight> getFlightsByPurchaseId(Long purchaseId);
 }

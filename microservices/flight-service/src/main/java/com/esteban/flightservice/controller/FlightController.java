@@ -70,7 +70,7 @@ public class FlightController {
 
 	@GetMapping("/purchase/{purchaseId}")
 	public ResponseEntity<List<Flight>> listFlightsByPurchaseId(@PathVariable("/purchaseId") Long id) {
-		
+
 		List<Flight> flights = flightServiceImpl.getFlightsByPurchaseId(id);
 		if (flights.isEmpty()) {
 			return ResponseEntity.notFound().build();

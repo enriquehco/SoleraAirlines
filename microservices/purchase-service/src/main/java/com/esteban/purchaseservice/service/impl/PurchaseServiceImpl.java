@@ -3,7 +3,6 @@ package com.esteban.purchaseservice.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -18,10 +17,10 @@ public class PurchaseServiceImpl implements PurchaseService {
 
 	@Autowired
 	private PurchaseRepository purchaseRepository;
-	
+
 	@Autowired
 	private RestTemplate restTemplate;
-	
+
 	public List<Flight> getFlightsByPurchaseId(Long purchaseId) {
 
 		List<Flight> flights = restTemplate.getForObject("http://localhost:8082/flights/purchase/" + purchaseId, List.class);

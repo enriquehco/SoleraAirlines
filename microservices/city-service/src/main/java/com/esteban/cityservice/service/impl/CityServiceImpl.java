@@ -16,11 +16,11 @@ public class CityServiceImpl implements CityService {
 
 	@Autowired
 	private RestTemplate restTemplate;
-	
+
 	@Autowired
 	private CityRepository cityRepository;
-	
-	
+
+
 	public List<Flight> getFlightsByCityId(Long cityId){
 		List<Flight> flights = restTemplate.getForObject("http://localhost:8082/flights/city/" + cityId, List.class);
 		return flights;
