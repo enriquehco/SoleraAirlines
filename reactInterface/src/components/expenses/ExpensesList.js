@@ -14,9 +14,13 @@ const ExpensesList = (props) => {
       {props.items.map((item) => (
         <ExpenseItems
           key={item.id}
-          title={item.title}
-          amount={item.amount}
+          departure={item.departure}
+          arrival={item.arrival}
+          company={item.company}
+          duration={item.duration}
+          luggage={item.luggage}
           date={item.date}
+          id_city={item.id_city}
         />
       ))}
     </ul>

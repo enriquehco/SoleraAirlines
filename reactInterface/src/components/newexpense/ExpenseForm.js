@@ -1,65 +1,87 @@
 import React, { useState } from "react";
 
-import './ExpenseForm.css';
+import "./ExpenseForm.css";
+import ListArrivals from "./ListArrivals";
 
 const ExpenseForm = (props) => {
+  const [EnteredDeparture, setEnteredDeparture] = useState("--select--");
+  const [EnteredArrival, setEnteredArrival] = useState("--select--");
+  const [isDeparture, setIsDeparture] = useState(false);
+  const [isArrival, setIsArrival] = useState(false);
+  const [isCheckedOneWay, setIsCheckedOneWay] = useState(false)
 
-    const [enteredTitle, setEnteredTitle] = useState('');
-    const [enteredAmount, setEnteredAmount] = useState('');
-    const [enteredDate, setEnteredDate] = useState('');
+  const departuresList = [
+    "roma",
+    "paris",
+    "bhagdad",
+    "iowa",
+    "sevilla"
+  ];
 
-    const titleChangeHandler = (event) => {
-        setEnteredTitle(event.target.value);
+  const titleChangeHandler = (event) => {
+    setEnteredDeparture(event.target.value);
+  };
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    const expenseData = {
+      departure: EnteredDeparture,
+      arrival: EnteredArrival,
+      oneway: isCheckedOneWay
     };
+    props.onSaveExpenseData(expenseData);
+  };
 
-    const amountChangeHandler = (event) => {
-        setEnteredAmount(event.target.value);
-    };
+  const cancelHandler = () => {
+    props.onCancelSubmit();
+  };
 
-    const dateChangeHandler = (event) => {
-        setEnteredDate(event.target.value);
-    };
-
-    const submitHandler = (event) => {
-        event.preventDefault();
-
-        const expenseData = {
-            title: enteredTitle,
-            amount: enteredAmount,
-            date: new Date(enteredDate)
-        };
-        props.onSaveExpenseData(expenseData);
-        setEnteredTitle('');
-        setEnteredAmount('');
-        setEnteredDate('');
-    };
-
-    const cancelHandler = () => {
-        props.onCancelSubmit();
+  const departureHandler = (event) => {
+    event.preventDefault();
+    if(EnteredDeparture != "--select--"){
+        setIsDeparture(true); 
     }
+  };
 
-    return (
-        <form onSubmit={submitHandler}>
-            <div className="new-expense__controls">
-                <div className="new-expense__control">
-                    <label>Title</label>
-                    <input type='text' value={enteredTitle} onChange={titleChangeHandler}/>
-                </div>
-                <div className="new-expense__control">
-                    <label>Amount</label>
-                    <input type='number' value={enteredAmount} min='0.01' step='0.01' onChange={amountChangeHandler}/>
-                </div>
-                <div className="new-expense__control">
-                    <label>Date</label>
-                    <input type='date' value={enteredDate} min='2019-01-01' max='2022-12-31' onChange={dateChangeHandler}/>
-                </div>
-            </div>
-            <div className="new-expense__actions">
-                <button onClick={cancelHandler}>Cancel</button>
-                <button type='submit'>Add Expense</button>
-            </div>
-        </form>
-    )
-}
+  const arrivalHandler = (event,arrivalData) => {
+    event.preventDefault();
+    setEnteredArrival(arrivalData);
+    console.log(arrivalData);
+    setIsArrival(true);
+  }
+
+  const checkHandler = () => {
+    setIsCheckedOneWay(!isCheckedOneWay)
+  }
+
+  return (
+    <form onSubmit={submitHandler}>
+      <div className="new-expense__controls">
+        <div className="new-expense__control">
+          <label>From</label>
+          {/*<input type='text' value={EnteredDeparture} onChange={titleChangeHandler}/>*/}
+          <select
+            id="departures"
+            value={EnteredDeparture}
+            onChange={(e) => setEnteredDeparture(e.target.value)}
+          >
+            <option >--select--</option>
+            {departuresList.map((item) => (
+                <option value={item}>{item}</option>
+            ))}
+          </select>
+          <button onClick={departureHandler}>Continue</button>
+        </div>
+        {isDeparture && <ListArrivals onArrivalSelected={arrivalHandler}/>}
+        {isArrival && <div><input type="checkbox" id="checkbox" checked={isCheckedOneWay} onChange={checkHandler}/><label htmlFor="checkbox">One Way Trip?</label></div>}
+      </div>
+      <div className="new-expense__actions">
+        <button onClick={cancelHandler}>Cancel</button>
+        <button type="submit">Search for flights</button>
+      </div>
+    </form>
+  );
+};
 
 export default ExpenseForm;
