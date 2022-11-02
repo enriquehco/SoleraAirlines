@@ -3,7 +3,6 @@ package com.grupoRocodromo.soleraAirlines.soleraAirlines.Service;
 import java.util.List;
 
 import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.Flight;
-import com.grupoRocodromo.soleraAirlines.soleraAirlines.model.User;
 
 public interface FlightService {
 
@@ -35,7 +34,7 @@ public interface FlightService {
 	// Sets final price depending on user data
 	public static double setPricePerUser (Flight flight, int age, boolean luggage) {
 		double discount = 1;
-		
+
 		if (age < 2) {
 			discount = 0;
 		}
