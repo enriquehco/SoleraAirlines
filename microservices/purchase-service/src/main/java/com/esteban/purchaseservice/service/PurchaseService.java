@@ -13,6 +13,8 @@ public interface PurchaseService {
 	Purchase getPurchaseById(Long id);
 
 	Boolean purchaseCompleted(String surname);
+	
+	//Purchase savePurchaseAfterSaleCompleted(Purchase purchase);
 
 
 }

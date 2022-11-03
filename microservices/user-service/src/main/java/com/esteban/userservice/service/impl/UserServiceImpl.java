@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.esteban.userservice.entity.User;
+import com.esteban.userservice.models.Analityc;
 import com.esteban.userservice.models.Flight;
 import com.esteban.userservice.repository.UserRepository;
 import com.esteban.userservice.service.UserService;
@@ -24,6 +25,14 @@ public class UserServiceImpl implements UserService {
 
 		List<Flight> flights = restTemplate.getForObject("http://localhost:8082/flights/user/" + userId, List.class);
 		return flights;
+	}
+
+	public List<Analityc> getAnalitycsByUserId(Long userId) {
+
+		List<Analityc> analitycs = restTemplate.getForObject("http://localhost:8085/analitycs/user/" + userId,
+				List.class);
+		return analitycs;
+
 	}
 
 	@Override

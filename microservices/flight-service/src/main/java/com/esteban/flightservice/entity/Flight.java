@@ -26,6 +26,35 @@ public class Flight {
 	private Long cityId;
 	private Long purchaseId;
 
+	public Flight() {
+
+	}
+	
+
+	public Flight(Long id, String company, boolean cabinLuggage, Double basePrice, String departureCity, int duration,
+			Date dateTime, String layoverCity, String arrivalCity, Long userId, Long cityId, Long purchaseId) {
+		super();
+		this.id = id;
+		this.company = company;
+		this.cabinLuggage = cabinLuggage;
+		this.basePrice = basePrice;
+		this.departureCity = departureCity;
+		this.duration = duration;
+		this.dateTime = dateTime;
+		this.layoverCity = layoverCity;
+		this.arrivalCity = arrivalCity;
+		this.userId = userId;
+		this.cityId = cityId;
+		this.purchaseId = purchaseId;
+	}
+
+
+	public Flight(Long userId, Long cityId, Long purchaseId) {
+		super();
+		this.userId = userId;
+		this.cityId = cityId;
+		this.purchaseId = purchaseId;
+	}
 
 	public Long getPurchaseId() {
 		return purchaseId;
