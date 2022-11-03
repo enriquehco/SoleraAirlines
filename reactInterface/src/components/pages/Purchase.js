@@ -21,7 +21,7 @@ const Purchase = () => {
                 id_city={pData.data.cityId}
                 base_price={pData.data.basePrice}
             />
-            <Purchases />
+            <Purchases flightInfo={pData}/>
         </div>
     );
 }

@@ -5,12 +5,17 @@ import { useNavigate } from "react-router-dom";
 
 import "./Purchases.css";
 
-const Purchases = () => {
+const Purchases = (props) => {
+  const finfo = props.flightInfo.data;
   const [nPassengers, setNPassengers] = useState(0);
   const [isPassengers, setIsPassengers] = useState(false);
   const [allPSubmit, setAllPSubmit] = useState(false);
   const [elArray, setElArray] = useState([]);
   const [userArray, setUserArray] = useState([]);
+
+  const [definitiveprice, setDefinitiveprice] = useState(0);
+  const [defsuccess, setDefsuccess] = useState(false);
+  const [finalid, setFinalid] = useState(0);
 
   const navigate = useNavigate();
 
@@ -18,7 +23,6 @@ const Purchases = () => {
     event.preventDefault();
     if (data != 0) {
       //setNPassengers(data);
-      console.log(nPassengers);
       setElArray(Array(Number(nPassengers)).fill(" "));
       setIsPassengers(true);
     } else {
@@ -27,9 +31,8 @@ const Purchases = () => {
   };
 
   const userSubmitHandler = (userData) => {
+    console.log(userData);
     setUserArray([...userArray, userData]);
-    console.log([...userArray, userData].length);
-    console.log(nPassengers);
     if (Number([...userArray, userData].length) === Number(nPassengers)) {
       setAllPSubmit(true);
     }
@@ -41,15 +44,61 @@ const Purchases = () => {
 
   const sendUserFormsHandler = () => {
     userArray.map((item) => {
-      console.log(item);
+      const postbody = {
+        name: item.name,
+        surname: item.surname,
+        nationality: item.nationality,
+        identification: item.identification,
+        age: Number(item.age),
+      };
       const userrequestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(item),
+        body: JSON.stringify(postbody),
       };
       fetch("http://localhost:8081/users", userrequestOptions)
         .then((response) => response.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+          setFinalid(data.id);
+        });
+      let now = new Date().toJSON();
+      let reqtime = now.replace(/T/g, " ").replace(/Z/g, "").slice(0, -4);
+      let fetchPriceRoute =
+        "http://localhost:8084/purchases/userPrice/" +
+        finfo.basePrice +
+        "/" +
+        item.age +
+        "/" +
+        item.luggage;
+      fetch(fetchPriceRoute)
+        .then((response) => response.json())
+        .then((data) => {
+          setDefinitiveprice(data);
+        });
+      let fetchSuccessRoute = "http://localhost:8084/purchases/saleCompleted/" + item.surname;
+      fetch(fetchSuccessRoute)
+        .then((response) => response.json())
+        .then((data) => {
+          setDefsuccess(data);
+        });
+      console.log(defsuccess);
+      const purchaseItem = {
+        final_price: definitiveprice,
+        purchase_date: reqtime,
+        success: defsuccess,
+        user_id: finalid
+      };
+      console.log(purchaseItem);
+      const purchaserequestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(purchaseItem),
+      };
+      {/*fetch("http://localhost:8084/purchases", purchaserequestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        });*/}
     });
   };
 
