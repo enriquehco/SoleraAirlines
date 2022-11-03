@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import Card from "../UI/Card";
 import PurchaseForm from "./PurchaseForm";
+import { useNavigate } from "react-router-dom";
+
 import "./Purchases.css";
 
 const Purchases = () => {
   const [nPassengers, setNPassengers] = useState(0);
   const [isPassengers, setIsPassengers] = useState(false);
+  const [allPSubmit, setAllPSubmit] = useState(false);
   const [elArray, setElArray] = useState([]);
+  const [userArray, setUserArray] = useState([]);
+
+  const navigate = useNavigate();
 
   const submitNumberHandler = (event, data) => {
     event.preventDefault();
@@ -20,11 +26,38 @@ const Purchases = () => {
     }
   };
 
+  const userSubmitHandler = (userData) => {
+    setUserArray([...userArray, userData]);
+    console.log([...userArray, userData].length);
+    console.log(nPassengers);
+    if (Number([...userArray, userData].length) === Number(nPassengers)) {
+      setAllPSubmit(true);
+    }
+  };
+
+  const rejectUserFormsHandler = () => {
+    navigate("/");
+  };
+
+  const sendUserFormsHandler = () => {
+    userArray.map((item) => {
+      console.log(item);
+      const userrequestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(item),
+      };
+      fetch("http://localhost:8081/users", userrequestOptions)
+        .then((response) => response.json())
+        .then((data) => console.log(data));
+    });
+  };
+
   return (
     <div className="general_borders">
       <Card className="form_element">
         <form>
-          <label for="npass">Number of passengers to buy</label>
+          <label for="npass">Number of passengers to buy for</label>
           <input
             type="number"
             id="npass"
@@ -37,12 +70,27 @@ const Purchases = () => {
           </button>
         </form>
       </Card>
-      {isPassengers && console.log(elArray)}
-      {isPassengers && elArray.map(() => (
-        <div>
-          <PurchaseForm />
-        </div>
-      ))}
+      {isPassengers && (
+        <Card>
+          {elArray.map(() => (
+            <div>
+              <PurchaseForm onSubmitUser={userSubmitHandler} />
+            </div>
+          ))}
+          {allPSubmit && (
+            <div>
+              <div>
+                <button onClick={rejectUserFormsHandler}>
+                  Reject purchase
+                </button>
+              </div>
+              <div>
+                <button onClick={sendUserFormsHandler}>Confirm purchase</button>
+              </div>
+            </div>
+          )}
+        </Card>
+      )}
     </div>
   );
 };
