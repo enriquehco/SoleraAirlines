@@ -38,10 +38,10 @@ public class AnalitycController {
 		return ResponseEntity.ok(newAnalityc);
 	}
 
-	@GetMapping("/user/{userId}")
-	public ResponseEntity<List<Analityc>> listAnalitycsByUserId(@PathVariable("userId") Long userId) {
+	@GetMapping("/user/{userName}")
+	public ResponseEntity<List<Analityc>> listAnalitycsByUserId(@PathVariable("userName") String userName) {
 
-		List<Analityc> analitycs = analitycServiceImpl.getAnalitycsByUserId(userId);
+		List<Analityc> analitycs = analitycServiceImpl.getAnalitycsByUserName(userName);
 		if (analitycs.isEmpty()) {
 			return ResponseEntity.notFound().build();
 		}

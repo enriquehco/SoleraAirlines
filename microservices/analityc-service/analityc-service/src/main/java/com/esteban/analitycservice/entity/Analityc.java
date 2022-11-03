@@ -16,7 +16,7 @@ public class Analityc {
 
 	private Date logDate;
 	private String typeOfLog;
-	private Long userId;
+	private String userName;
 
 	public Long getId() {
 		return id;
@@ -24,10 +24,6 @@ public class Analityc {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Long getUserId() {
-		return userId;
 	}
 
 	public Date getLogDate() {
@@ -46,8 +42,12 @@ public class Analityc {
 		this.typeOfLog = typeOfLog;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 }
