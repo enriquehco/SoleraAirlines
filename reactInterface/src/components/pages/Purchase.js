@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {useLocation} from 'react-router-dom';
 import ExpenseItems from '../expenses/ExpenseItems';
 import Purchases from '../purchases/Purchases';
+import Navbar from '../UI/Navbar';
 
 const Purchase = () => {
     const location = useLocation();
@@ -9,6 +10,7 @@ const Purchase = () => {
 
     return (
         <div>
+            <Navbar />
             <div>Flight Information</div><br/>
             <ExpenseItems 
                 key={pData.data.id}

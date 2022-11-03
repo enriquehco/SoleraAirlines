@@ -16,6 +16,7 @@ const Purchases = (props) => {
   const [definitiveprice, setDefinitiveprice] = useState(0);
   const [defsuccess, setDefsuccess] = useState(false);
   const [finalid, setFinalid] = useState(0);
+  const [reqtime, setReqtime] = useState("");
 
   const navigate = useNavigate();
 
@@ -39,7 +40,7 @@ const Purchases = (props) => {
   };
 
   const rejectUserFormsHandler = () => {
-    navigate("/");
+    navigate("/home");
   };
 
   const sendUserFormsHandler = () => {
@@ -62,7 +63,7 @@ const Purchases = (props) => {
           setFinalid(data.id);
         });
       let now = new Date().toJSON();
-      let reqtime = now.replace(/T/g, " ").replace(/Z/g, "").slice(0, -4);
+      setReqtime(now.replace(/T/g, " ").replace(/Z/g, "").slice(0, -4));
       let fetchPriceRoute =
         "http://localhost:8084/purchases/userPrice/" +
         finfo.basePrice +
@@ -73,8 +74,9 @@ const Purchases = (props) => {
       fetch(fetchPriceRoute)
         .then((response) => response.json())
         .then((data) => {
-          setDefinitiveprice(data);
+          setDefinitiveprice(Number(data));
         });
+      console.log(item.surname);
       let fetchSuccessRoute = "http://localhost:8084/purchases/saleCompleted/" + item.surname;
       fetch(fetchSuccessRoute)
         .then((response) => response.json())
@@ -82,25 +84,29 @@ const Purchases = (props) => {
           setDefsuccess(data);
         });
       console.log(defsuccess);
-      const purchaseItem = {
-        final_price: definitiveprice,
-        purchase_date: reqtime,
-        success: defsuccess,
-        user_id: finalid
-      };
-      console.log(purchaseItem);
-      const purchaserequestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(purchaseItem),
-      };
-      {/*fetch("http://localhost:8084/purchases", purchaserequestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        });*/}
+      sendPurchaseHandler();
     });
   };
+
+  const sendPurchaseHandler = () => {
+    const purchaseItem = {
+      final_price: definitiveprice,
+      purchase_date: reqtime,
+      success: defsuccess,
+      user_id: finalid
+    };
+    console.log(purchaseItem);
+    const purchaserequestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(purchaseItem),
+    };
+    fetch("http://localhost:8084/purchases", purchaserequestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }
 
   return (
     <div className="general_borders">

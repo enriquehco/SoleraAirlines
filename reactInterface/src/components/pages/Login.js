@@ -13,7 +13,8 @@ const Login = (props) => {
   const navigate = useNavigate();
 
   const goHomeHandler = () => {
-    navigate("/home");
+
+    navigate("/home",{state: userName});
   };
 
   return (
