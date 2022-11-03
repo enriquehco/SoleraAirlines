@@ -18,6 +18,6 @@ public interface FlightService {
 	List<Flight> getFlightsByCityId(Long cityId);
 
 	List<Flight> getFlightsByPurchaseId(Long purchaseId);
-	
-	Double setPricePerUser (int basePrice, int age, boolean luggage);
+
+	Double setPricePerUser (Double basePrice, int age, boolean luggage);
 }

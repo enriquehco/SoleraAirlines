@@ -20,7 +20,6 @@ public class CityServiceImpl implements CityService {
 	@Autowired
 	private CityRepository cityRepository;
 
-
 	public List<Flight> getFlightsByCityId(Long cityId){
 		List<Flight> flights = restTemplate.getForObject("http://localhost:8082/flights/city/" + cityId, List.class);
 		return flights;
@@ -40,10 +39,5 @@ public class CityServiceImpl implements CityService {
 	public City getCitytById(Long id) {
 		return cityRepository.findById(id).orElse(null);
 	}
-
-	/*@Override
-	public List<City> getCitiessByFlightId(Long flightId) {
-		return cityRepository.findByFlightId(flightId);
-	}*/
 
 }
