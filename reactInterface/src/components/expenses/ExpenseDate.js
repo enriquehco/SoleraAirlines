@@ -1,17 +1,17 @@
-import './ExpenseItems.css';
+import "./ExpenseItems.css";
 
-function ExpenseDate(data){
-    const day = data.date.toLocaleString('en-US',{ day: '2-digit'});
-    const month = data.date.toLocaleString('en-US',{ month: 'long'});
-    const year = data.date.getFullYear();
+function ExpenseDate(data) {
+  const day = data.date.substring(8, 10);
+  const month = data.date.substring(5, 7);
+  const year = data.date.substring(0, 4);
 
-    return (
-      <div className='expense-date'>
-        <div className='expense-date__day'>{day}</div>
-        <div className='expense-date__month'>{month}</div>
-        <div className='expense-date__year'>{year}</div>
-      </div>
-    );
+  return (
+    <div className="expense-date">
+      <div className="expense-date__day">{day}</div>
+      <div className="expense-date__month">{month}</div>
+      <div className="expense-date__year">{year}</div>
+    </div>
+  );
 }
 
 export default ExpenseDate;

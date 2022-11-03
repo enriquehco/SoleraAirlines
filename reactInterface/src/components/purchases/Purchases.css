@@ -1,0 +1,13 @@
+.form_element {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  background-color: #9B3B9B;
+}
+
+.general_borders{
+    padding: 2.0rem;
+    margin: 1rem 1rem;
+}
