@@ -10,7 +10,7 @@ import com.esteban.purchaseservice.service.impl.PurchaseServiceImpl;
 
 @SpringBootTest
 class PurchaseServiceApplicationTests {
-	
+
 	@Autowired
 	private PurchaseServiceImpl purchaseServiceImpl ;//= new PurchaseServiceImpl();
 

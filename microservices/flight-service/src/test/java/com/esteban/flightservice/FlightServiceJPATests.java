@@ -16,9 +16,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.esteban.flightservice.entity.Flight;
 import com.esteban.flightservice.repository.FlightRespository;
 import com.esteban.flightservice.service.impl.FlightServiceImpl;
-import com.esteban.flightservice.entity.Flight;
 
 @ExtendWith(MockitoExtension.class)
 class FlightServiceJPATests {
@@ -32,7 +32,7 @@ class FlightServiceJPATests {
 	@Test
 	void getAllFlights_WhenSearchFlights_ReturnNumberOfFlightsThatAreStoredInDB() {
 
-		List<Flight> list = new ArrayList<Flight>();
+		List<Flight> list = new ArrayList<>();
 		Flight f1 = new Flight();
 		Flight f2 = new Flight();
 		Flight f3 = new Flight();
@@ -51,7 +51,7 @@ class FlightServiceJPATests {
 	@Test
 	void getFlightsByUserId_WhenPassUserId_ReturnNumberOFFlightsForThisUser() {
 
-		List<Flight> list = new ArrayList<Flight>();
+		List<Flight> list = new ArrayList<>();
 
 		Flight f1 = new Flight((long) 1, (long) 2, (long) 3);
 		Flight f2 = new Flight((long) 1, (long) 1, (long) 2);
@@ -70,7 +70,7 @@ class FlightServiceJPATests {
 	@Test
 	void getFlightsByCityId_WhenPassCityId_ReturnNumberOFFlightsForThisCity() {
 
-		List<Flight> list = new ArrayList<Flight>();
+		List<Flight> list = new ArrayList<>();
 		Long cityId = (long) 3;
 		Date newDate = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -96,7 +96,7 @@ class FlightServiceJPATests {
 		assertEquals(3, flightList.size());
 		verify(flightRespository).findByCityId(cityId);
 
-		
+
 	}
 
 }

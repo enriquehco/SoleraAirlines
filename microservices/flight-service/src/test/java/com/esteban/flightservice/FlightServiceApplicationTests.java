@@ -17,7 +17,7 @@ class FlightServiceApplicationTests {
 	Double basePrice;
 	int age;
 	boolean luggage = true;
-	
+
 	@Autowired
 	private FlightServiceImpl flightServiceImpl; //= new FlightServiceImpl();
 
