@@ -7,12 +7,11 @@ import com.esteban.analitycservice.entity.Analityc;
 public interface AnalitycService {
 
 	List<Analityc> getAllAnalitycs();
-	
-	List<Analityc> getAnalitycsByUserId(Long userId);
-	
+
+	List<Analityc> getAnalitycsByUserName(String userName);
+
 	Analityc saveAnalityc(Analityc analityc);
-	
+
 	Analityc getAnalitycById(Long analitycId);
-	
-	
+
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.esteban.userservice.entity.User;
+import com.esteban.userservice.models.Analityc;
 import com.esteban.userservice.models.Flight;
 import com.esteban.userservice.repository.UserRepository;
 import com.esteban.userservice.service.UserService;
@@ -26,6 +27,14 @@ public class UserServiceImpl implements UserService {
 		return flights;
 	}
 
+	public List<Analityc> getAnalitycsByUserName(String userName) {
+
+		List<Analityc> analitycs = restTemplate.getForObject("http://localhost:8085/analitycs/user/" + userName,
+				List.class);
+		return analitycs;
+
+	}
+
 	@Override
 	public List<User> getAllUsers() {
 		return userRepository.findAll();
@@ -39,6 +48,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUserById(Long id) {
 		return userRepository.findById(id).orElse(null);
+	}
+
+	@Override
+	public User getUserByName(String userName) {
+		return userRepository.findByName(userName);
 	}
 
 }
