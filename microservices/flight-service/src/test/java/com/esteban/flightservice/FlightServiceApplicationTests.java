@@ -13,16 +13,8 @@ class FlightServiceApplicationTests {
 	Double basePrice;
 	int age;
 	boolean luggage = true;
+
 	private FlightServiceImpl flightServiceImpl = new FlightServiceImpl();
-//	private FlightRespository flightRespository flightServiceImpl
-
-	/*
-	 * @BeforeEach void setUp() { // flightRespository =
-	 * Mockito.mock(FlightRespository.class); flightServiceImpl = new
-	 * FlightServiceImpl(); }
-	 */
-
-	// private FlightServiceImpl flightServiceImpl = new FlightServiceImpl();
 
 	@Test
 	void setPricePerUser_WhenAgeLessThan2_ReturnZero() {
@@ -99,18 +91,5 @@ class FlightServiceApplicationTests {
 		Double result = flightServiceImpl.setPricePerUser(basePrice, age, luggage);
 
 		assertEquals(expected, result);
-
 	}
-
-	/*
-	 * @Test void getFlightsByUserId_ShouldReturnAllFlightsOfThisUserId() {
-	 * 
-	 * int expected = 1; int result = flightServiceImpl.getFlightsByUserId((long)
-	 * 3).size();
-	 * 
-	 * assertEquals(expected, result);
-	 * 
-	 * }
-	 */
-
 }
