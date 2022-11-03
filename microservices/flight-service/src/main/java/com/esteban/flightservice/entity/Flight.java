@@ -26,6 +26,16 @@ public class Flight {
 	private Long cityId;
 	private Long purchaseId;
 
+	public Flight() {
+
+	}
+
+	public Flight(Long userId, Long cityId, Long purchaseId) {
+		super();
+		this.userId = userId;
+		this.cityId = cityId;
+		this.purchaseId = purchaseId;
+	}
 
 	public Long getPurchaseId() {
 		return purchaseId;
