@@ -104,12 +104,12 @@ class FlightServiceApplicationTests {
 
 	/*
 	 * @Test void getFlightsByUserId_ShouldReturnAllFlightsOfThisUserId() {
-	 * 
+	 *
 	 * int expected = 1; int result = flightServiceImpl.getFlightsByUserId((long)
 	 * 3).size();
-	 * 
+	 *
 	 * assertEquals(expected, result);
-	 * 
+	 *
 	 * }
 	 */
 

@@ -33,7 +33,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 				"http://localhost:8082/flights/pricePerUser/" + basePrice + "/" + age + "/" + luggage, Double.class);
 		return pricePerUser;
 	}
-	
+
 	@Override
 	public List<Purchase> getAllPurchases() {
 		return purchaseRepository.findAll();
