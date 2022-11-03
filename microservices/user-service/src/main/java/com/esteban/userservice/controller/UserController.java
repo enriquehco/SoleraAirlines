@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.esteban.userservice.entity.User;
+import com.esteban.userservice.models.Analityc;
 import com.esteban.userservice.models.Flight;
 import com.esteban.userservice.service.impl.UserServiceImpl;
 
@@ -61,6 +62,18 @@ public class UserController {
 
 		List<Flight> flights = userServiceImpl.getFlightsByUserId(userId);
 		return ResponseEntity.ok(flights);
+	}
+
+	@GetMapping("/analitycs/{userId}")
+	public ResponseEntity<List<Analityc>> getAnalitycsByUserId(@PathVariable("userId") Long userId) {
+
+		User user = userServiceImpl.getUserById(userId);
+		if (user == null) {
+			return ResponseEntity.notFound().build();
+		}
+
+		List<Analityc> analitycs = userServiceImpl.getAnalitycsByUserId(userId);
+		return ResponseEntity.ok(analitycs);
 	}
 
 }

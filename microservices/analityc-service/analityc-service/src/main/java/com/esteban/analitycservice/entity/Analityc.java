@@ -14,8 +14,8 @@ public class Analityc {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private Date logInDate;
-	private Date logOutDate;
+	private Date logDate;
+	private String typeOfLog;
 	private Long userId;
 
 	public Long getId() {
@@ -26,24 +26,24 @@ public class Analityc {
 		this.id = id;
 	}
 
-	public Date getLogInDate() {
-		return logInDate;
-	}
-
-	public void setLogInDate(Date logInDate) {
-		this.logInDate = logInDate;
-	}
-
-	public Date getLogOutDate() {
-		return logOutDate;
-	}
-
-	public void setLogOutDate(Date logOutDate) {
-		this.logOutDate = logOutDate;
-	}
-
 	public Long getUserId() {
 		return userId;
+	}
+
+	public Date getLogDate() {
+		return logDate;
+	}
+
+	public void setLogDate(Date logDate) {
+		this.logDate = logDate;
+	}
+
+	public String getTypeOfLog() {
+		return typeOfLog;
+	}
+
+	public void setTypeOfLog(String typeOfLog) {
+		this.typeOfLog = typeOfLog;
 	}
 
 	public void setUserId(Long userId) {
