@@ -1,0 +1,7 @@
+.individual_form_item {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    background-color: #9b3b7c;
+  }

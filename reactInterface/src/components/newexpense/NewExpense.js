@@ -5,18 +5,24 @@ import './NewExpense.css';
 
 const NewExpense = (props) => {
     const [isEditing, setIsEditing] = useState(false);
+    const [depCitOptions, setDepCitOptions] = useState([]);
 
     const saveExpenseDataHandler = (enteredExpenseData) => {
         const expenseData = {
             ...enteredExpenseData,
             id: Math.random().toString()
         };
-        console.log(expenseData)
         props.onAddExpense(expenseData);
     }
 
     const startEditingHandler = () => {
         setIsEditing(true);
+        fetch("http://localhost:8082/flights").then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            setDepCitOptions([... new Set(data.map(option => option.departureCity))]);
+          });
     }
 
     const stopEditingHandler = () => {
@@ -26,7 +32,7 @@ const NewExpense = (props) => {
     return (
         <div className="new-expense">
             {!isEditing && <button onClick={startEditingHandler}>Search for a new Flight</button>}
-            {isEditing && <ExpenseForm onCancelSubmit={stopEditingHandler} onSaveExpenseData={saveExpenseDataHandler}/>}
+            {isEditing && <ExpenseForm depCits={depCitOptions} onCancelSubmit={stopEditingHandler} onSaveExpenseData={saveExpenseDataHandler}/>}
         </div>
     )
 }

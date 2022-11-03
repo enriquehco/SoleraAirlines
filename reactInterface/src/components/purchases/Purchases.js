@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 import Card from "../UI/Card";
+import PurchaseForm from "./PurchaseForm";
 import "./Purchases.css";
 
 const Purchases = () => {
-  const [nPassengers, setNPassengers] = useState();
+  const [nPassengers, setNPassengers] = useState(0);
+  const [isPassengers, setIsPassengers] = useState(false);
+  const [elArray, setElArray] = useState([]);
 
   const submitNumberHandler = (event, data) => {
     event.preventDefault();
-    setNPassengers(data);
-    console.log(data);
+    if (data != 0) {
+      //setNPassengers(data);
+      console.log(nPassengers);
+      setElArray(Array(Number(nPassengers)).fill(" "));
+      setIsPassengers(true);
+    } else {
+      setIsPassengers(false);
+    }
   };
 
   return (
@@ -20,6 +29,7 @@ const Purchases = () => {
             type="number"
             id="npass"
             name="npass"
+            value={nPassengers}
             onChange={(e) => setNPassengers(e.target.value)}
           ></input>
           <button onClick={(e) => submitNumberHandler(e, nPassengers)}>
@@ -27,6 +37,12 @@ const Purchases = () => {
           </button>
         </form>
       </Card>
+      {isPassengers && console.log(elArray)}
+      {isPassengers && elArray.map(() => (
+        <div>
+          <PurchaseForm />
+        </div>
+      ))}
     </div>
   );
 };

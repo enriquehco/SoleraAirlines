@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 const ListArrivals = (props) => {
+  const arrivals = props.arrList;
   const [EnteredArrival, setEnteredArrival] = useState("--select--");
 
   return (
@@ -9,11 +10,15 @@ const ListArrivals = (props) => {
       <select
         id="arrivals"
         value={EnteredArrival}
-        onChange={(e) => {setEnteredArrival(e.target.value); props.onArrivalSelected(e,e.target.value)}}
+        onChange={(e) => {
+          setEnteredArrival(e.target.value);
+          props.onArrivalSelected(e, e.target.value);
+        }}
       >
         <option value="--select--">--select--</option>
-        <option value="otro sitio">otro sitio</option>
-        <option value="nunca jamas">nunca jamas</option>
+        {arrivals.map((item) => (
+          <option value={item}>{item}</option>
+        ))}
       </select>
     </div>
   );

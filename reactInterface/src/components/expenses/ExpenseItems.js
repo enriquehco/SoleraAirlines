@@ -14,7 +14,7 @@ function ExpenseItems(data) {
           <h2>{data.departure}</h2>
           <h2>{data.arrival}</h2>
           <h2>{data.amount}</h2>
-          <h2>{data.luggage ? "allowed": "not allowed"}</h2>
+          <h2>{data.luggage ? "allowed" : "not allowed"}</h2>
           <h2>{data.duration}</h2>
           <h2 className="expense-item__price">{data.base_price}€</h2>
         </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import ExpenseItems from "./ExpenseItems";
 import "./ExpensesList.css";
@@ -15,7 +15,6 @@ const headerNames = [
 ];
 
 const ExpensesList = (props) => {
-
   const navigate = useNavigate();
 
   if (props.items.length === 0) {
@@ -26,9 +25,9 @@ const ExpensesList = (props) => {
     );
   }
 
-  const selectFlightHandler = () => {
-    navigate('/purchase',{state:{info: 'hello', message: 'somethingelse'}});
-  }
+  const selectFlightHandler = (data) => {
+    navigate("/purchase", {state: {data}});
+  };
 
   return (
     <div>
@@ -38,17 +37,17 @@ const ExpensesList = (props) => {
       <br />
       <ul className="expenses-list">
         {props.items.map((item) => (
-          <div onClick={selectFlightHandler} style={{ cursor: 'pointer' }}>
+          <div onClick={(e) => {selectFlightHandler(item)}} style={{ cursor: "pointer" }}>
             <ExpenseItems
               key={item.id}
-              departure={item.departure}
-              arrival={item.arrival}
+              departure={item.departureCity}
+              arrival={item.arrivalCity}
               company={item.company}
               duration={item.duration}
-              luggage={item.luggage}
-              date={item.date}
-              id_city={item.id_city}
-              base_price={item.base_price}
+              luggage={item.cabinLuggage}
+              date={item.dateTime}
+              id_city={item.cityId}
+              base_price={item.basePrice}
             />
           </div>
         ))}
