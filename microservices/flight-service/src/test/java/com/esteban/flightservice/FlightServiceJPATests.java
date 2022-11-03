@@ -71,7 +71,7 @@ class FlightServiceJPATests {
 	void getFlightsByCityId_WhenPassCityId_ReturnNumberOFFlightsForThisCity() {
 
 		List<Flight> list = new ArrayList<Flight>();
-		Long cityId = (long) 1;
+		Long cityId = (long) 3;
 		Date newDate = new Date();
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		try {
@@ -83,9 +83,9 @@ class FlightServiceJPATests {
 		Flight f1 = new Flight((long) 1, "hola", true, 10.2, "madrid", 20, newDate, "Sevilla", "ROma", (long) 2,
 				(long) 1, (long) 2);
 		Flight f2 = new Flight((long) 2, "hola", true, 10.2, "madrid", 20, newDate, "Sevilla", "ROma", (long) 21,
-				(long) 30, (long) 25);
+				(long) 1, (long) 25);
 		Flight f3 = new Flight((long) 3, "hola", true, 10.2, "madrid", 20, newDate, "Sevilla", "ROma", (long) 23,
-				(long) 200, (long) 22);
+				(long) 1, (long) 22);
 
 		list.add(f1);
 		list.add(f2);
@@ -93,7 +93,7 @@ class FlightServiceJPATests {
 
 		when(flightRespository.findByCityId(cityId)).thenReturn(list);
 		List<Flight> flightList = flightServiceImpl.getFlightsByCityId(cityId);
-		assertEquals(1, flightList.size());
+		assertEquals(3, flightList.size());
 		verify(flightRespository).findByCityId(cityId);
 
 		

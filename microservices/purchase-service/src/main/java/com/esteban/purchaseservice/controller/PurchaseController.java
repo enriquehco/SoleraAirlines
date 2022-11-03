@@ -42,7 +42,7 @@ public class PurchaseController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Purchase> saveUser(@RequestBody Purchase purchase) {
+	public ResponseEntity<Purchase> savePurchase(@RequestBody Purchase purchase) {
 		Purchase newPurchase = purchaseServiceImpl.createPurchase(purchase);
 		return ResponseEntity.ok(newPurchase);
 	}

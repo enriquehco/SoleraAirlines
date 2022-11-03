@@ -3,18 +3,23 @@ package com.esteban.flightservice;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.esteban.flightservice.service.impl.FlightServiceImpl;
 
 @SpringBootTest
+@ExtendWith(SpringExtension.class)
 class FlightServiceApplicationTests {
 
 	Double basePrice;
 	int age;
 	boolean luggage = true;
-
-	private FlightServiceImpl flightServiceImpl = new FlightServiceImpl();
+	
+	@Autowired
+	private FlightServiceImpl flightServiceImpl; //= new FlightServiceImpl();
 
 	@Test
 	void setPricePerUser_WhenAgeLessThan2_ReturnZero() {
