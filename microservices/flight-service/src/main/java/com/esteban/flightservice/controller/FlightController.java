@@ -80,9 +80,9 @@ public class FlightController {
 
 	@GetMapping("/pricePerUser/{basePrice}/{age}/{luggage}")
 	public ResponseEntity<Double> getPricePerUser(@PathVariable("basePrice")Double basePrice,@PathVariable("age") int age, @PathVariable("luggage") boolean luggage) {
-		
+
 		Double price = flightServiceImpl.setPricePerUser(basePrice, age, luggage);
 		return ResponseEntity.ok(price);
 	}
-	
+
 }

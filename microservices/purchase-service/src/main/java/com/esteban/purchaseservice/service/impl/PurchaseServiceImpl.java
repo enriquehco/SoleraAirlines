@@ -8,7 +8,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.esteban.purchaseservice.entity.Purchase;
 import com.esteban.purchaseservice.models.Flight;
-import com.esteban.purchaseservice.models.User;
 import com.esteban.purchaseservice.repository.PurchaseRepository;
 import com.esteban.purchaseservice.service.PurchaseService;
 

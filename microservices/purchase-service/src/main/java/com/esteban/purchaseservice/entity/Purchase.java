@@ -69,7 +69,7 @@ public class Purchase {
 	public void setuserId(Long userId) {
 		this.userId = userId;
 	}
-	
-	
+
+
 
 }
