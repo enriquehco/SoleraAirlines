@@ -3,6 +3,7 @@ package com.esteban.purchaseservice.service;
 import java.util.List;
 
 import com.esteban.purchaseservice.entity.Purchase;
+import com.esteban.purchaseservice.models.Flight;
 
 public interface PurchaseService {
 
@@ -14,7 +15,8 @@ public interface PurchaseService {
 
 	Boolean purchaseCompleted(String surname);
 
-	//Purchase savePurchaseAfterSaleCompleted(Purchase purchase);
+	Double getPricePerUser(int basePrice, int age, boolean luggage);
 
+	List<Flight> getFlightsByPurchaseId(Long purchaseId);
 
 }

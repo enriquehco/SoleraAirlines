@@ -21,12 +21,14 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Override
 	public List<Flight> getFlightsByUserId(Long userId) {
 
 		List<Flight> flights = restTemplate.getForObject("http://localhost:8082/flights/user/" + userId, List.class);
 		return flights;
 	}
 
+	@Override
 	public List<Analityc> getAnalitycsByUserName(String userName) {
 
 		List<Analityc> analitycs = restTemplate.getForObject("http://localhost:8085/analitycs/user/" + userName,

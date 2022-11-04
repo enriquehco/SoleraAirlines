@@ -3,6 +3,8 @@ package com.esteban.userservice.service;
 import java.util.List;
 
 import com.esteban.userservice.entity.User;
+import com.esteban.userservice.models.Analityc;
+import com.esteban.userservice.models.Flight;
 
 public interface UserService {
 
@@ -13,4 +15,8 @@ public interface UserService {
 	User getUserById(Long id);
 
 	User getUserByName(String userName);
+
+	List<Flight> getFlightsByUserId(Long userId);
+
+	List<Analityc> getAnalitycsByUserName(String userName);
 }
