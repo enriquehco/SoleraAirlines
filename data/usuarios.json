@@ -1,0 +1,23 @@
+{
+  "usuario1": {
+    "name": "Esteban",
+    "surname": "Sanchez",
+    "nationality": "Spain",
+    "identification": "78877887F",
+    "age": 5
+  },
+  "usuario2": {
+    "name": "Enrique",
+    "surname": "De La Rosa",
+    "nationality": "Morocco",
+    "identification": "46824646V",
+    "age": 25
+  },
+  "usuario3": {
+    "name": "Nolasco",
+    "surname": "Obama",
+    "nationality": "Chile",
+    "identification": "35824683X",
+    "age": 95
+  }
+}
