@@ -64,15 +64,15 @@ public class UserController {
 		return ResponseEntity.ok(flights);
 	}
 
-	@GetMapping("/analitycs/{userId}")
-	public ResponseEntity<List<Analityc>> getAnalitycsByUserId(@PathVariable("userId") Long userId) {
+	@GetMapping("/analitycs/{userName}")
+	public ResponseEntity<List<Analityc>> getAnalitycsByUserId(@PathVariable("userName") String userName) {
 
-		User user = userServiceImpl.getUserById(userId);
+		User user = userServiceImpl.getUserByName(userName);
 		if (user == null) {
 			return ResponseEntity.notFound().build();
 		}
 
-		List<Analityc> analitycs = userServiceImpl.getAnalitycsByUserId(userId);
+		List<Analityc> analitycs = userServiceImpl.getAnalitycsByUserName(userName);
 		return ResponseEntity.ok(analitycs);
 	}
 

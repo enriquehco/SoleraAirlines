@@ -7,10 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import com.esteban.analitycservice.entity.Analityc;
 
-
 @Repository
 public interface AnalitycRepository extends JpaRepository<Analityc, Long> {
-	
-	List<Analityc> findByUserId(Long userId);
+
+	List<Analityc> findByUserName(String userName);
 
 }

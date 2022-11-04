@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.esteban.userservice.entity.User;
@@ -15,6 +16,7 @@ import com.esteban.userservice.service.impl.UserServiceImpl;
 @SpringBootTest
 class UserServiceApplicationTests {
 
+	@Autowired
 	private UserServiceImpl userServiceImpl = new UserServiceImpl();
 
 	@Test
@@ -42,7 +44,7 @@ class UserServiceApplicationTests {
 	@Test
 	void getUserById_WhenIdDoesNotExist_ReturnNull() {
 
-		Long id = 1L;
+		Long id = 5L;
 
 		User result = userServiceImpl.getUserById(id);
 

@@ -3,6 +3,7 @@ package com.esteban.purchaseservice;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.esteban.purchaseservice.service.impl.PurchaseServiceImpl;
@@ -10,7 +11,8 @@ import com.esteban.purchaseservice.service.impl.PurchaseServiceImpl;
 @SpringBootTest
 class PurchaseServiceApplicationTests {
 
-	private PurchaseServiceImpl purchaseServiceImpl = new PurchaseServiceImpl();
+	@Autowired
+	private PurchaseServiceImpl purchaseServiceImpl ;//= new PurchaseServiceImpl();
 
 	@Test
 	void completedPurchase_WhenSurnameIsError_ReturnFalse() {
