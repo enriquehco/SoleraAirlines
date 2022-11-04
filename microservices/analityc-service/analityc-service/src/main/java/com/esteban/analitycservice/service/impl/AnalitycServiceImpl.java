@@ -21,8 +21,8 @@ public class AnalitycServiceImpl implements AnalitycService {
 	}
 
 	@Override
-	public List<Analityc> getAnalitycsByUserId(Long userId) {
-		return analitycRepository.findByUserId(userId);
+	public List<Analityc> getAnalitycsByUserName(String userName) {
+		return analitycRepository.findByUserName(userName);
 	}
 
 	@Override

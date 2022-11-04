@@ -29,7 +29,7 @@ public class Flight {
 	public Flight() {
 
 	}
-	
+
 
 	public Flight(Long id, String company, boolean cabinLuggage, Double basePrice, String departureCity, int duration,
 			Date dateTime, String layoverCity, String arrivalCity, Long userId, Long cityId, Long purchaseId) {

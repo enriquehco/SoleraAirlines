@@ -11,14 +11,11 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	private String name;
 	private String surname;
 	private String nationality;
 	private String identification;
 	private int age;
-
-
 
 	public Long getId() {
 		return id;
@@ -67,7 +64,4 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
-
-
 }

@@ -20,6 +20,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	@Override
 	public List<Flight> getFlightsByPurchaseId(Long purchaseId) {
 
 		List<Flight> flights = restTemplate.getForObject("http://localhost:8082/flights/purchase/" + purchaseId,
@@ -27,6 +28,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 		return flights;
 	}
 
+	@Override
 	public Double getPricePerUser(int basePrice, int age, boolean luggage) {
 
 		Double pricePerUser = restTemplate.getForObject(

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import {useLocation} from 'react-router-dom';
 import Expenses from "../expenses/Expenses";
 import NewExpense from "../newexpense/NewExpense";
 import "../../App.css";
+import Navbar from "../UI/Navbar";
 
 const dummy_flights = [
   {
@@ -71,6 +73,8 @@ const Home = () => {
   //dummy item delete after trying to fetch from localhost
   const [courses, setCourses] = useState();
 
+  const location = useLocation();
+
   const addExpenseHandler = (flightinfo) => {
     setFilterData(flightinfo);
     getFilteredFlights(flightinfo);
@@ -94,19 +98,9 @@ const Home = () => {
       });
   };
 
-  //dummy method to fetch courses with http request to localhost
-  function fetchCoursesHandler() {
-    fetch("http://localhost:8083/cities")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        //setMovies(data.results);
-      });
-  }
-
   return (
     <div className="App">
+      <Navbar info={location.state}/>
       <h2>Welcome to Solera Airlines</h2>
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses
@@ -114,7 +108,6 @@ const Home = () => {
         filters={filterData}
         showf={showFlights}
       />
-      <button onClick={fetchCoursesHandler}>Fetch course info</button>
     </div>
   );
 };
