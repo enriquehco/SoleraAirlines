@@ -3,7 +3,7 @@ package com.esteban.userservice.models;
 import java.util.Date;
 
 public class Flight {
-	
+
 	private String company;
 	private boolean luggage;
 	private int price;
@@ -12,10 +12,19 @@ public class Flight {
 	private Date dateTime;
 	private String layoverCity;
 	private String arrivalCity;
-	
+	//private Long userId;
+
 	public Flight() {
 		super();
 	}
+
+	/*public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}*/
 
 	public String getCompany() {
 		return company;
@@ -80,6 +89,5 @@ public class Flight {
 	public void setArrivalCity(String arrivalCity) {
 		this.arrivalCity = arrivalCity;
 	}
-	
 
 }

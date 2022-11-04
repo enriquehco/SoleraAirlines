@@ -16,14 +16,61 @@ public class Flight {
 
 	private String company;
 	private boolean cabinLuggage;
-	private int basePrice;
+	private Double basePrice;
 	private String departureCity;
 	private int duration;
 	private Date dateTime;
 	private String layoverCity;
 	private String arrivalCity;
 	private Long userId;
-	
+	private Long cityId;
+	private Long purchaseId;
+
+	public Flight() {
+
+	}
+
+
+	public Flight(Long id, String company, boolean cabinLuggage, Double basePrice, String departureCity, int duration,
+			Date dateTime, String layoverCity, String arrivalCity, Long userId, Long cityId, Long purchaseId) {
+		super();
+		this.id = id;
+		this.company = company;
+		this.cabinLuggage = cabinLuggage;
+		this.basePrice = basePrice;
+		this.departureCity = departureCity;
+		this.duration = duration;
+		this.dateTime = dateTime;
+		this.layoverCity = layoverCity;
+		this.arrivalCity = arrivalCity;
+		this.userId = userId;
+		this.cityId = cityId;
+		this.purchaseId = purchaseId;
+	}
+
+
+	public Flight(Long userId, Long cityId, Long purchaseId) {
+		super();
+		this.userId = userId;
+		this.cityId = cityId;
+		this.purchaseId = purchaseId;
+	}
+
+	public Long getPurchaseId() {
+		return purchaseId;
+	}
+
+	public void setPurchaseId(Long purchaseId) {
+		this.purchaseId = purchaseId;
+	}
+
+	public Long getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(Long cityId) {
+		this.cityId = cityId;
+	}
 
 	public Long getUserId() {
 		return userId;
@@ -49,19 +96,19 @@ public class Flight {
 		this.company = company;
 	}
 
-	public boolean isCabinLuggage() {
+	public boolean getcabinLuggage() {
 		return cabinLuggage;
 	}
 
-	public void setCabinLuggage(boolean cabinLuggage) {
-		this.cabinLuggage = cabinLuggage;
+	public void setcabinLuggage(boolean luggage) {
+		this.cabinLuggage = luggage;
 	}
 
-	public int getBasePrice() {
+	public Double getbasePrice() {
 		return basePrice;
 	}
 
-	public void setBasePrice(int basePrice) {
+	public void setbasePrice(Double basePrice) {
 		this.basePrice = basePrice;
 	}
 

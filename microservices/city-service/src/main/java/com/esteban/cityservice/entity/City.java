@@ -13,7 +13,7 @@ public class City {
 	private Long id;
 
 	private String name;
-	private Long flightId;
+	//private Long flightId;
 
 	public Long getId() {
 		return id;
@@ -31,12 +31,12 @@ public class City {
 		this.name = name;
 	}
 
-	public Long getFlightId() {
+	/*public Long getFlightId() {
 		return flightId;
 	}
 
 	public void setFlightId(Long flightId) {
 		this.flightId = flightId;
-	}
+	}*/
 
 }

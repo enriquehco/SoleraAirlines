@@ -4,13 +4,15 @@ import "./ExpenseForm.css";
 import ListArrivals from "./ListArrivals";
 
 const ExpenseForm = (props) => {
+  const departuresList = props.depCits;
+
   const [EnteredDeparture, setEnteredDeparture] = useState("--select--");
   const [EnteredArrival, setEnteredArrival] = useState("--select--");
   const [isDeparture, setIsDeparture] = useState(false);
   const [isArrival, setIsArrival] = useState(false);
   const [isCheckedOneWay, setIsCheckedOneWay] = useState(false);
-
-  const departuresList = ["roma", "paris", "bhagdad", "iowa", "sevilla"];
+  const [arrivalsList, setArrivalsList] = useState([]);
+  //const [departuresList, setDeparturesList] = useState(dummyflights);
 
   const titleChangeHandler = (event) => {
     setEnteredDeparture(event.target.value);
@@ -32,10 +34,23 @@ const ExpenseForm = (props) => {
     props.onCancelSubmit();
   };
 
+  const getArrivals = (departure) => {
+    fetch("http://localhost:8082/flights")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setArrivalsList([... new Set(data.filter(obj => {
+          return obj.departureCity == departure;
+        }).map((option) => option.arrivalCity))]);
+      });
+      setIsDeparture(true);
+  };
+
   const departureHandler = (event, departureData) => {
     event.preventDefault();
     if (departureData != "--select--") {
-      setIsDeparture(true);
+      getArrivals(departureData);
     } else {
       setIsDeparture(false);
     }
@@ -64,7 +79,10 @@ const ExpenseForm = (props) => {
           <select
             id="departures"
             value={EnteredDeparture}
-            onChange={(e) => {setEnteredDeparture(e.target.value); departureHandler(e,e.target.value)}}
+            onChange={(e) => {
+              setEnteredDeparture(e.target.value);
+              departureHandler(e, e.target.value);
+            }}
           >
             <option>--select--</option>
             {departuresList.map((item) => (
@@ -73,7 +91,7 @@ const ExpenseForm = (props) => {
           </select>
           {/*<button onClick={departureHandler}>Continue</button>*/}
         </div>
-        {isDeparture && <ListArrivals onArrivalSelected={arrivalHandler} />}
+        {isDeparture && <ListArrivals arrList={arrivalsList} onArrivalSelected={arrivalHandler} />}
         {isArrival && (
           <div>
             <input

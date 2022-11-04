@@ -8,4 +8,5 @@ import com.esteban.userservice.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
 
+	User findByName(String name);
 }

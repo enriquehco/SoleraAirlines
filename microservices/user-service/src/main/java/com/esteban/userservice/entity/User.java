@@ -11,9 +11,11 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	private String name;
-	private String email;
+	private String surname;
+	private String nationality;
+	private String identification;
+	private int age;
 
 	public Long getId() {
 		return id;
@@ -31,12 +33,35 @@ public class User {
 		this.name = name;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getSurname() {
+		return surname;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setSurname(String surname) {
+		this.surname = surname;
 	}
 
+	public String getNationality() {
+		return nationality;
+	}
+
+	public void setNationality(String nationality) {
+		this.nationality = nationality;
+	}
+
+	public String getIdentification() {
+		return identification;
+	}
+
+	public void setIdentification(String identification) {
+		this.identification = identification;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
 }

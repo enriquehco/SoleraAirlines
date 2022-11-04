@@ -38,10 +38,30 @@ public class FlightServiceImpl implements FlightService {
 	@Override
 	public List<Flight> getFlightsByCityId(Long cityId) {
 		return flightRespository.findByCityId(cityId);
-				
+
 	}
-	
-	
-	
+
+	@Override
+	public List<Flight> getFlightsByPurchaseId(Long purchaseId) {
+		return flightRespository.findByPurchaseId(purchaseId);
+	}
+
+	@Override
+	public Double setPricePerUser(Double basePrice, int age, boolean luggage) {
+		double discount = 1;
+		//Flight flight = flightRespository.findById(flightId).orElse(null);
+		if (age < 2) {
+			discount = 0;
+		} else if (age >= 2 && age <= 9) {
+			discount -= 0.5;
+		}
+
+		if (luggage) {
+			discount += 0.2;
+		}
+
+		double finalPrice = basePrice * discount;
+		return finalPrice;
+	}
 
 }
