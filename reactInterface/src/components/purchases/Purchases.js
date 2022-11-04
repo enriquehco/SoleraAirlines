@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../UI/Card";
 import PurchaseForm from "./PurchaseForm";
 import { useNavigate } from "react-router-dom";
@@ -13,12 +13,21 @@ const Purchases = (props) => {
   const [elArray, setElArray] = useState([]);
   const [userArray, setUserArray] = useState([]);
 
-  const [definitiveprice, setDefinitiveprice] = useState(0);
-  const [defsuccess, setDefsuccess] = useState(false);
-  const [finalid, setFinalid] = useState(0);
-  const [reqtime, setReqtime] = useState("");
+  const [definitiveprice, setDefinitiveprice] = useState();
+  const [defsuccess, setDefsuccess] = useState();
+  const [finalid, setFinalid] = useState();
+  const [reqtime, setReqtime] = useState();
+
+  const [isprice, setIsprice] = useState(false);
+  const [issucc, setIssucc] = useState(false);
+  const [isid, setIsid] = useState(false);
+  const [istime, setIstime] = useState(false);
 
   const navigate = useNavigate();
+
+  function timeout(delay) {
+    return new Promise((res) => setTimeout(res, delay));
+  }
 
   const submitNumberHandler = (event, data) => {
     event.preventDefault();
@@ -43,7 +52,24 @@ const Purchases = (props) => {
     navigate("/home");
   };
 
-  const sendUserFormsHandler = () => {
+  const adduserasync = (body) => {
+    const userrequestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    };
+
+    let res = fetch("http://localhost:8081/users", userrequestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data != undefined) {
+          setFinalid(data.id);
+          console.log(data.id);
+        }
+      });
+  };
+
+  const sendUserFormsHandler = async () => {
     userArray.map((item) => {
       const postbody = {
         name: item.name,
@@ -52,16 +78,7 @@ const Purchases = (props) => {
         identification: item.identification,
         age: Number(item.age),
       };
-      const userrequestOptions = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(postbody),
-      };
-      fetch("http://localhost:8081/users", userrequestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-          setFinalid(data.id);
-        });
+      adduserasync(postbody);
       let now = new Date().toJSON();
       setReqtime(now.replace(/T/g, " ").replace(/Z/g, "").slice(0, -4));
       let fetchPriceRoute =
@@ -77,36 +94,72 @@ const Purchases = (props) => {
           setDefinitiveprice(Number(data));
         });
       console.log(item.surname);
-      let fetchSuccessRoute = "http://localhost:8084/purchases/saleCompleted/" + item.surname;
+      let fetchSuccessRoute =
+        "http://localhost:8084/purchases/saleCompleted/" + item.surname;
       fetch(fetchSuccessRoute)
         .then((response) => response.json())
         .then((data) => {
           setDefsuccess(data);
         });
-      console.log(defsuccess);
-      sendPurchaseHandler();
+      //sendPurchaseHandler();
     });
   };
 
+  useEffect(() => {
+    //purchaseBody.final_price = definitiveprice;
+    if (definitiveprice != undefined) {
+      setIsprice(true);
+    }
+  }, [definitiveprice]);
+
+  useEffect(() => {
+    //purchaseBody.purchase_date = reqtime;
+    setIstime(true);
+  }, [reqtime]);
+
+  useEffect(() => {
+    //purchaseBody.success = defsuccess;
+    setIssucc(true);
+  }, [defsuccess]);
+
+  useEffect(() => {
+    if (issucc && istime && isprice && isid) {
+      sendPurchaseHandler();
+    }
+  }, [definitiveprice, reqtime, defsuccess, finalid]);
+
+  useEffect(() => {
+    //purchaseBody.user_id = finalid;
+    setIsid(true);
+    console.log("value for id has changed to " + finalid);
+  }, [finalid]);
+
   const sendPurchaseHandler = () => {
-    const purchaseItem = {
-      final_price: definitiveprice,
-      purchase_date: reqtime,
-      success: defsuccess,
-      user_id: finalid
-    };
-    console.log(purchaseItem);
-    const purchaserequestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(purchaseItem),
-    };
-    fetch("http://localhost:8084/purchases", purchaserequestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      });
-  }
+    userArray.map(() => {
+      let purchaseBody = {
+        finalPrice: definitiveprice,
+        purchase_date: reqtime,
+        success: defsuccess,
+        userId: finalid,
+      };
+      console.log(reqtime);
+      const purchaserequestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(purchaseBody),
+      };
+      console.log(purchaseBody);
+      let res = fetch("http://localhost:8084/purchases", purchaserequestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+        });
+      setIssucc(false);
+      setIstime(false);
+      setIsprice(false);
+      setIsid(false);
+    });
+  };
 
   return (
     <div className="general_borders">

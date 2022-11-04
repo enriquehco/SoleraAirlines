@@ -1,7 +1,14 @@
 import React from "react";
 import "./Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = (props) => {
+  const navigate = useNavigate();
+
+  const goAboutHandler = () =>{
+    navigate('/about');
+  }
+
   return (
     <div>
       <ul id="nav">
@@ -12,7 +19,7 @@ const Navbar = (props) => {
           <a href="#">Home</a>
         </li>
         <li>
-          <a href="#">About</a>
+          <a href="#" onClick={goAboutHandler}>About</a>
         </li>
         <li>
           <a href="#">FAQ</a>
