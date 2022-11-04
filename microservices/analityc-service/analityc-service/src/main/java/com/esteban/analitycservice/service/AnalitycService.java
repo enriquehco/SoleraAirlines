@@ -13,5 +13,5 @@ public interface AnalitycService {
 	Analityc saveAnalityc(Analityc analityc);
 
 	Analityc getAnalitycById(Long analitycId);
-	
+
 }
